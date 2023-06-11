@@ -19,12 +19,9 @@
     }
   }
 
-  .popular-card-followButton {
+  .whiteButton  {
     margin-left: auto;
     padding: 8px 16px;
-    color: var(--brand-color);
-    background: var(--white);
-    border: 1px solid var(--brand-color);
     border-radius: 50px;
 
     &.isFollow {

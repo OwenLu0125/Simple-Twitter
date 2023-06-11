@@ -1,0 +1,21 @@
+.header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
+.backButton {
+  margin-right: 19px;
+  cursor: pointer;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+
+  .tweetCount {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--Secondary);
+  }
+}

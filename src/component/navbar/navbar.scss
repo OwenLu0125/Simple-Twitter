@@ -3,7 +3,6 @@
   flex-direction: column;
   width: 200px;
   padding: 10px;
-  background-color: #ffff;
 
   .navbarLogo {
     margin-bottom: 30px;
@@ -16,6 +15,12 @@
 
     img {
       margin-right: 16px;
+    }
+
+    &.active {
+      h5 {
+        color: var(--brand-color);
+      }
     }
   }
 

@@ -17,7 +17,7 @@ const PopularCard = ({ userName, account }) => {
         <p className="popular-card-account">{account}</p>
       </div>
       <button
-        className={`popular-card-followButton ${isFollow ? "isFollow" : ""}`}
+        className={`whiteButton  ${isFollow ? "isFollow" : ""}`}
         onClick={handleFollow}
       >
         {isFollow ? "正在跟隨" : "跟隨"}

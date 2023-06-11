@@ -11,7 +11,6 @@
 
   /* 品牌色 */
   --brand-color: #ff6600;
-
   --Primary: #0062ff;
   --Secondary: #6c757d;
   --Success: #3dd598;
@@ -70,9 +69,15 @@ h5.medium {
   font-weight: 700;
 }
 
-.button {
+.orangeButton {
   background-color: var(--brand-color);
   color: var(--white);
   border: none;
   border-radius: 50px;
+}
+
+.whiteButton {
+  color: var(--brand-color);
+  background: var(--white);
+  border: 1px solid var(--brand-color);
 }
