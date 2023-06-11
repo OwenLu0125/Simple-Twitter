@@ -5,11 +5,11 @@
   padding: 10px;
   background-color: #ffff;
 
-  .navbar-logo {
+  .navbarLogo {
     margin-bottom: 30px;
   }
 
-  .navbar-item {
+  .navbarItem {
     display: flex;
     align-items: center;
     margin-bottom: 40px;
@@ -19,15 +19,16 @@
     }
   }
 
-  .navbar-item .medium {
+  .navbarItem .medium {
     color: var(--gray-800);
   }
 
-  .navbar-button {
+  .navbarButton {
     justify-content: center;
     padding: 8px 24px;
     background: var(--brand-color);
     border-radius: 50px;
+    cursor: pointer;
 
     button {
       color: var(--white);
