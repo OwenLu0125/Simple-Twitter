@@ -7,7 +7,7 @@ const NavbarItem = ({ path, icon, activeIcon, text, isActive, onClick }) => {
 
   return (
     <NavLink
-      exact
+      exact="true"
       to={`/${path}`}
       className={`navbarItem ${isActive ? "active" : ""}`}
       activeClassName="active"

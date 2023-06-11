@@ -34,7 +34,7 @@ const Post = () => {
             />
           </div>
         </div>
-        <button className="button postButton">推文</button>
+        <button className="button orangeButton">推文</button>
       </div>
       <hr className="thickBar" />
     </div>

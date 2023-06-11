@@ -1,17 +1,16 @@
-.tabBar{
+.tabBar {
   display: flex;
 
   .tabButton {
-  padding: 15px 53px;
-  font-size: 15px;
-  font-weight: 700;
-  color: #657786;
+    padding: 15px 53px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #657786;
+    white-space: nowrap;
 
-  &.active {
-    color: var(--brand-color);
-    border-bottom: 1px solid var(--brand-color);
+    &.active {
+      color: var(--brand-color);
+      border-bottom: 1px solid var(--brand-color);
+    }
   }
 }
-
-}
-

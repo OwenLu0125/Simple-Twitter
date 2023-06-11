@@ -17,8 +17,18 @@
     }
   }
   .modalFooter {
+    display: flex;
+    align-items: center;
     margin-left: auto;
     margin-top: auto;
+
+    .characterLimit {
+      padding: 10px;
+      margin-right: 25px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--Error);
+    }
 
     .orangeButton {
       padding: 8px 16px;

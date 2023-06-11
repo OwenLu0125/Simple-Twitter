@@ -55,6 +55,7 @@ const PopupModal = ({ open, onClose }) => {
           />
         </div>
         <div className="modalFooter">
+          <p className="characterLimit">字數不可超過 140 字</p>
           <button className="orangeButton" onClick={handlePopupClose}>
             推文
           </button>
