@@ -1,4 +1,27 @@
-.popupOpened {
-  background-color: var(--gray-600);
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 20px;
+  gap: 8px;
 
+  .modalBody {
+    display: flex;
+    align-items: center;
+
+    .tweetInput {
+      font-weight: 400;
+      color: var(--Secondary);
+      padding: 8px;
+    }
+  }
+  .modalFooter {
+    margin-left: auto;
+    margin-top: auto;
+
+    .orangeButton {
+      padding: 8px 16px;
+    }
+  }
 }

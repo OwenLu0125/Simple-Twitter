@@ -1,4 +1,7 @@
-.tabButton {
+.tabBar{
+  display: flex;
+
+  .tabButton {
   padding: 15px 53px;
   font-size: 15px;
   font-weight: 700;
@@ -9,3 +12,6 @@
     border-bottom: 1px solid var(--brand-color);
   }
 }
+
+}
+

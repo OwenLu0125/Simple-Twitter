@@ -4,26 +4,31 @@ import CloseIcon from "../../assets/closeIcon.svg";
 import UserPhotoIcon from "../../assets/postPhoto.svg";
 import "./PopupModal.scss";
 
-const PopupModal = ({ open, onClose, onSubmit }) => {
+const PopupModal = ({ open, onClose }) => {
   const [tweetText, setTweetText] = useState("");
 
-  const handleTweetTextChange = (event) => {
-    setTweetText(event.target.value);
-  };
-
-  const handleTweetSubmit = () => {
-    console.log("提交推文:", tweetText);
-    setTweetText("");
-    onSubmit();
-  };
-
-  const handlePopupOpen = () => {
-    document.body.classList.add("popupOpened");
+  const handleTweetTextChange = ({ target: { value } }) => {
+    setTweetText(value);
   };
 
   const handlePopupClose = () => {
-    document.body.classList.remove("popupOpened");
+    setTweetText("");
     onClose();
+  };
+
+  const popupContentStyle = {
+    position: "absolute",
+    top: "56px",
+    left: "50%",
+    width: "634px",
+    height: "300px",
+    borderRadius: "14px",
+    background: "var(--white)",
+    transform: "translateX(-50%)",
+  };
+
+  const overlayStyle = {
+    background: "rgba(0, 0, 0, 0.5)",
   };
 
   return (
@@ -32,26 +37,17 @@ const PopupModal = ({ open, onClose, onSubmit }) => {
       modal
       closeOnDocumentClick
       onClose={handlePopupClose}
-      onOpen={handlePopupOpen}
-      contentStyle={{
-        background: "var(--white)",
-        width: "634px",
-        height: "300px",
-        borderRadius: "14px",
-      }}
+      contentStyle={popupContentStyle}
+      overlayStyle={overlayStyle}
     >
       <div className="modal">
         <div className="modalHeader">
-          <img
-            src={CloseIcon}
-            alt="close"
-            className="closeIcon"
-            onClick={handlePopupClose}
-          />
+          <img src={CloseIcon} alt="close" onClick={handlePopupClose} />
         </div>
+        <hr />
         <div className="modalBody">
           <img src={UserPhotoIcon} alt="avatar" className="userAvatar" />
-          <textarea
+          <input
             className="tweetInput"
             value={tweetText}
             onChange={handleTweetTextChange}
@@ -59,7 +55,7 @@ const PopupModal = ({ open, onClose, onSubmit }) => {
           />
         </div>
         <div className="modalFooter">
-          <button className="tweetButton" onClick={handleTweetSubmit}>
+          <button className="orangeButton" onClick={handlePopupClose}>
             推文
           </button>
         </div>

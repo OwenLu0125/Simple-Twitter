@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import PopupModal from "../popupModal/PopupModal";
-import { NavLink, useLocation } from "react-router-dom";
+import NavbarItem from "./navItems/NavItems";
+import { useLocation } from "react-router-dom";
 import NavbarLogo from "../../assets/logo.svg";
 import NavbarHomeIcon from "../../assets/home.svg";
 import NavbarHomeIconActive from "../../assets/homeActive.svg";
@@ -9,7 +10,7 @@ import NavbarUserIconActive from "../../assets/userInfoActive.svg";
 import NavbarSettingIcon from "../../assets/setting.svg";
 import NavbarSettingIconActive from "../../assets/settingActive.svg";
 import "./Navbar.scss";
-import NavbarItem from "./navItems/NavItems";
+
 
 const navItems = [
   {
@@ -40,7 +41,6 @@ const navItems = [
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
-  const [tweetText, setTweetText] = useState("");
   const location = useLocation();
   const { pathname } = location;
   const [activeItem, setActiveItem] = useState(pathname.substring(1));
@@ -51,11 +51,6 @@ const Navbar = () => {
 
   const handleCloseModal = () => {
     setShowModal(false);
-  };
-
-  const handleTweetSubmit = () => {
-    console.log("提交推文:", tweetText);
-    setTweetText("");
   };
 
   const handleItemClick = (item) => {
@@ -86,7 +81,6 @@ const Navbar = () => {
       <PopupModal
         open={showModal}
         onClose={handleCloseModal}
-        onSubmit={handleTweetSubmit}
       />
     </div>
   );
