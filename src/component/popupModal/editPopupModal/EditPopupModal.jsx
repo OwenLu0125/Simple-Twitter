@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Popup from "reactjs-popup";
 import CloseIcon from "../../../assets/closeIcon.svg";
 import UserPhotoIcon from "../../../assets/postPhoto.svg";
+import CameraIcon from "../../../assets/camera.svg";
+import WhiteCloseIcon from "../../../assets/whiteClose.svg";
 import "./EditPopupModal.scss";
 
 const EditPopupModal = ({ open, onClose }) => {
@@ -51,8 +53,22 @@ const EditPopupModal = ({ open, onClose }) => {
           <button className="orangeButton">儲存</button>
         </div>
         <div className="modalBody">
-          <div className="background" />
-          <img src={UserPhotoIcon} alt="avatar" className="editUserAvatar" />
+          <div className="background">
+            <div className="backgroundOverlay">
+              <img src={CameraIcon} alt="camera" className="cameraIcon" />
+              <img
+                src={WhiteCloseIcon}
+                alt="close"
+                className="whiteCloseIcon"
+              />
+            </div>
+          </div>
+          <div className="editUserAvatar">
+            <img src={UserPhotoIcon} alt="avatar" className="avatarIcon" />
+            <div className="editUserAvatarOverlay">
+              <img src={CameraIcon} alt="camera" className="cameraIcon" />
+            </div>
+          </div>
         </div>
         <div className="userContext">
           <div className="nameInputContainer">
