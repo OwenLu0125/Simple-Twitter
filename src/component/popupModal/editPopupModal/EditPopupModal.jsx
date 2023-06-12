@@ -39,6 +39,11 @@ const EditPopupModal = ({ open, onClose }) => {
     setUserPhotoPreview(URL.createObjectURL(file));
   };
 
+  const handleRemoveBackgroundPhoto = () => {
+    setBackgroundPhotoFile(null);
+    setBackgroundPhotoPreview(null);
+  };
+
   const popupContentStyle = {
     position: "absolute",
     top: "56px",
@@ -54,6 +59,21 @@ const EditPopupModal = ({ open, onClose }) => {
     background: "rgba(0, 0, 0, 0.5)",
   };
 
+  const handleSave = () => {
+    // 执行保存操作，例如向服务器发送更新请求
+    // 使用新的背景图像、用户头像、名称和自我介绍
+    // 可以根据需要自定义保存逻辑
+    console.log("保存數據:", {
+      username,
+      intro,
+      backgroundPhotoFile,
+      userPhotoFile,
+    });
+
+    // 关闭弹出框
+    onClose();
+  };
+
   return (
     <Popup
       open={open}
@@ -67,7 +87,9 @@ const EditPopupModal = ({ open, onClose }) => {
         <div className="modalHeader">
           <img src={CloseIcon} alt="close" onClick={handlePopupClose} />
           <h5 className="medium">編輯個人資料</h5>
-          <button className="orangeButton">儲存</button>
+          <button className="orangeButton" onClick={handleSave}>
+            儲存
+          </button>
         </div>
         <div className="modalBody">
           <div className="background">
@@ -79,7 +101,7 @@ const EditPopupModal = ({ open, onClose }) => {
               />
             ) : (
               <img
-                src={backgroundImage}
+                src={backgroundImage} //要帶入使用者原來的backgroundImage
                 alt="background"
                 className="backgroundImage"
               />
@@ -99,6 +121,7 @@ const EditPopupModal = ({ open, onClose }) => {
                 src={WhiteCloseIcon}
                 alt="close"
                 className="whiteCloseIcon"
+                onClick={handleRemoveBackgroundPhoto}
               />
             </div>
           </div>
@@ -106,7 +129,7 @@ const EditPopupModal = ({ open, onClose }) => {
             {userPhotoPreview ? (
               <img src={userPhotoPreview} alt="avatar" className="avatarIcon" />
             ) : (
-              <img src={UserPhotoIcon} alt="avatar" className="avatarIcon" />
+              <img src={UserPhotoIcon} alt="avatar" className="avatarIcon" /> //要帶入使用者原來的UserPhotoIcon
             )}
             <div className="editUserAvatarOverlay">
               <label htmlFor="userPhotoInput">
