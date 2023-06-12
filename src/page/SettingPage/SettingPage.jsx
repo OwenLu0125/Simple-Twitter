@@ -1,5 +1,6 @@
 import Navbar from '../../component/navbar/Navbar';
 import AuthInput from '../../component/authInput/AuthInput';
+import PageTag from '../../component/pageTag/PageTag';
 import '../SettingPage/SettingPage.scss';
 
 const SettingPage = () => {
@@ -9,9 +10,7 @@ const SettingPage = () => {
         <Navbar />
       </div>
       <div className="settingContainer">
-        <div className="title">
-          <h4 className="medium">帳戶設定</h4>
-        </div>
+        <PageTag />
         <div className="inputContainer">
           <AuthInput label="帳號" placeholder="請輸入帳號" value="" />
 
