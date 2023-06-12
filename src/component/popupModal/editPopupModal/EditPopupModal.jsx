@@ -4,11 +4,16 @@ import CloseIcon from "../../../assets/closeIcon.svg";
 import UserPhotoIcon from "../../../assets/postPhoto.svg";
 import CameraIcon from "../../../assets/camera.svg";
 import WhiteCloseIcon from "../../../assets/whiteClose.svg";
+import backgroundImage from "../../../assets/backgroundImage.svg";
 import "./EditPopupModal.scss";
 
 const EditPopupModal = ({ open, onClose }) => {
   const [username, setUsername] = useState("Chen Tzu-yu");
   const [intro, setIntro] = useState("I am an front-end engineer");
+  const [backgroundPhotoFile, setBackgroundPhotoFile] = useState(null);
+  const [backgroundPhotoPreview, setBackgroundPhotoPreview] = useState(null);
+  const [userPhotoFile, setUserPhotoFile] = useState(null);
+  const [userPhotoPreview, setUserPhotoPreview] = useState(null);
 
   const handleUsernameChange = (e) => {
     setUsername(e.target.value);
@@ -20,6 +25,18 @@ const EditPopupModal = ({ open, onClose }) => {
 
   const handlePopupClose = () => {
     onClose();
+  };
+
+  const handleBackgroundPhotoUpload = (e) => {
+    const file = e.target.files[0];
+    setBackgroundPhotoFile(file);
+    setBackgroundPhotoPreview(URL.createObjectURL(file));
+  };
+
+  const handleUserPhotoUpload = (e) => {
+    const file = e.target.files[0];
+    setUserPhotoFile(file);
+    setUserPhotoPreview(URL.createObjectURL(file));
   };
 
   const popupContentStyle = {
@@ -54,8 +71,30 @@ const EditPopupModal = ({ open, onClose }) => {
         </div>
         <div className="modalBody">
           <div className="background">
+            {backgroundPhotoPreview ? (
+              <img
+                src={backgroundPhotoPreview}
+                alt="background"
+                className="backgroundImage"
+              />
+            ) : (
+              <img
+                src={backgroundImage}
+                alt="background"
+                className="backgroundImage"
+              />
+            )}
             <div className="backgroundOverlay">
-              <img src={CameraIcon} alt="camera" className="cameraIcon" />
+              <label htmlFor="backgroundPhotoInput">
+                <input
+                  type="file"
+                  id="backgroundPhotoInput"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  onChange={handleBackgroundPhotoUpload}
+                />
+                <img src={CameraIcon} alt="camera" className="cameraIcon" />
+              </label>
               <img
                 src={WhiteCloseIcon}
                 alt="close"
@@ -64,9 +103,22 @@ const EditPopupModal = ({ open, onClose }) => {
             </div>
           </div>
           <div className="editUserAvatar">
-            <img src={UserPhotoIcon} alt="avatar" className="avatarIcon" />
+            {userPhotoPreview ? (
+              <img src={userPhotoPreview} alt="avatar" className="avatarIcon" />
+            ) : (
+              <img src={UserPhotoIcon} alt="avatar" className="avatarIcon" />
+            )}
             <div className="editUserAvatarOverlay">
-              <img src={CameraIcon} alt="camera" className="cameraIcon" />
+              <label htmlFor="userPhotoInput">
+                <input
+                  type="file"
+                  id="userPhotoInput"
+                  accept="image/*"
+                  style={{ display: "none" }}
+                  onChange={handleUserPhotoUpload}
+                />
+                <img src={CameraIcon} alt="camera" className="cameraIcon" />
+              </label>
             </div>
           </div>
         </div>
