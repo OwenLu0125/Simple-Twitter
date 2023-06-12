@@ -5,6 +5,7 @@ import LoginPage from './page/LoginPage/LoginPage';
 import RegistPage from './page/RegistPage/RegistPage';
 import LoginAdmin from './page/LoginAdmin/LoginAdmin';
 import SettingPage from './page/SettingPage/SettingPage';
+import UsersDashboard from './page/UsersDashboard/UsersDashboard';
 import './base.scss';
 import './reset.scss';
 import { AuthProvider } from './contexts/AuthContext';
@@ -22,6 +23,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<RegistPage />} />
             <Route path="account-setting" element={<SettingPage />} />
+            <Route path="admin-userspanel" element={<UsersDashboard />} />
           </Routes>
         </AuthProvider>
         {/* 
