@@ -19,11 +19,11 @@ function App() {
           <Routes>
             <Route path="/mainPage" element={<MainPage />} />
             <Route path="/user/self" element={<UserSelf />} />
-            <Route path="/login-admin" element={<LoginAdmin />} />
+            <Route path="/login_admin" element={<LoginAdmin />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<RegistPage />} />
-            <Route path="account-setting" element={<SettingPage />} />
-            <Route path="admin-userspanel" element={<UsersDashboard />} />
+            <Route path="/settings" element={<SettingPage />} />
+            <Route path="/admin_users" element={<UsersDashboard />} />
           </Routes>
         </AuthProvider>
         {/* 
