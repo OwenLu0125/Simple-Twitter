@@ -50,6 +50,19 @@ const TweetsList = ({ tweets }) => {
   //   },
   //   // 其他tweet的數據
   // ];
+  function formatTime(timestamp) {
+    const currentTime = new Date();
+    const postTime = new Date(timestamp);
+
+    const diffInMilliseconds = currentTime - postTime;
+    const diffInHours = Math.floor(diffInMilliseconds / (1000 * 60 * 60));
+
+    if (diffInHours < 1) {
+      return "剛剛";
+    } else {
+      return `${diffInHours}小時`;
+    }
+  }
 
   return (
     <div className="tweetsListContainer">
@@ -59,10 +72,10 @@ const TweetsList = ({ tweets }) => {
           //logo={tweet.logo}
           //username={tweet.username}
           //accountName={tweet.accountName}
-          postTime={tweet.createdAt}
+          postTime={formatTime(tweet.createdAt)}
           content={tweet.description}
-          //comments={tweet.comments}
-          //likes={tweet.likes}
+          comments={tweet.RepliesCount}
+          likes={tweet.LikesCount}
         />
       ))}
     </div>
