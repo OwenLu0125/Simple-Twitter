@@ -1,0 +1,39 @@
+.settingMainContainer {
+  display: flex;
+  margin: 0 427px 0 130px;
+
+  .settingContainer {
+    display: flex;
+    flex-direction: column;
+    border-left: 1px solid #e6ecf0;
+    border-right: 1px solid #e6ecf0;
+    height: 100vh;
+    width: 100%;
+
+    .title {
+      padding: 24px;
+      border-bottom: 1px solid #e6ecf0;
+    }
+
+    .inputContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      width: 100%;
+      padding: 24px 23px 0 23px;
+    }
+
+    .btn {
+      width: 88px;
+      height: 46px;
+      background-color: var(--brand-color);
+      color: white;
+      font-size: 20px;
+      font-size: 400;
+      border-radius: 50px;
+      align-self: flex-end;
+      margin: 40px 23px 0 0;
+      cursor: pointer;
+    }
+  }
+}

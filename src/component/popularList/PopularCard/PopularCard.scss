@@ -1,0 +1,32 @@
+.popular-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+
+  .popular-card-logo {
+    margin-right: 16px;
+  }
+
+  .popular-card-info {
+    display: flex;
+    flex-direction: column;
+    margin: auto 8px;
+
+    .popular-card-account {
+      font-size: 14px;
+      color: var(--gray-600);
+    }
+  }
+
+  .whiteButton  {
+    margin-left: auto;
+    padding: 8px 16px;
+    border-radius: 50px;
+
+    &.isFollow {
+      background: var(--brand-color);
+      color: var(--white);
+    }
+  }
+}

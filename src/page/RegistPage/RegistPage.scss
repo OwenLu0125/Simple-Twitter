@@ -1,9 +1,9 @@
-.loginAdminContainer {
+.signupContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 69px auto 0 auto;
+  margin: 69px auto;
   font-family: var(--main-font-family);
   width: 356px;
 
@@ -22,6 +22,7 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    width: 100%;
   }
 
   .btn {
@@ -38,10 +39,8 @@
   .switchSec {
     font-size: 16px;
     font-weight: 400;
-    align-self: flex-end;
-    padding-right: 12px;
 
-    .adminSwitch {
+    .cancelSwitch {
       color: var(--Primary);
       border-bottom: 1px solid var(--Primary);
       cursor: pointer;

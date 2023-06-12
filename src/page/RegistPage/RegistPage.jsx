@@ -1,6 +1,7 @@
-import AuthInput from '../component/authInput/AuthInput';
-import siteLogo from '../assets/logo.svg';
-import '../styles/RegistPage.scss';
+import AuthInput from '../../component/authInput/AuthInput';
+import siteLogo from '../../assets/logo.svg';
+import '../RegistPage/RegistPage.scss';
+import { Link } from 'react-router-dom';
 
 const RegistPage = () => {
   return (
@@ -32,7 +33,9 @@ const RegistPage = () => {
       </div>
       <button className="btn">註冊</button>
       <div className="switchSec">
-        <span className="cancelSwitch">取消</span>
+        <Link to="/login">
+          <span className="cancelSwitch">取消</span>
+        </Link>
       </div>
     </div>
   );
