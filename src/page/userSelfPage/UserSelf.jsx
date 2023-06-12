@@ -6,7 +6,7 @@ import PopularList from "../../component/popularList/PopularList";
 import TabBar from "../../component/tabBar/TabBar";
 import TweetsList from "../../component/tweets/TweetList";
 import UserInfo from "../../component/userInfo/UserInfo";
-import "../MainPage/MainPage.scss";
+import "../mainPage/MainPage.scss";
 
 const UserSelf = () => {
   //TweetsList裡面的api資料要更改為自己的推文

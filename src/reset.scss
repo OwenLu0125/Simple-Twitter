@@ -33,7 +33,7 @@ ol {
 
 /* Remove default font styles */
 body {
-  font-family: 'Noto Sans TC';
+  font-family: "Noto Sans TC";
 }
 
 /* Remove default outline styles */
@@ -70,8 +70,7 @@ input {
 /* Set default vertical alignment */
 button,
 input,
-select,
-textarea {
+select {
   vertical-align: middle;
 }
 

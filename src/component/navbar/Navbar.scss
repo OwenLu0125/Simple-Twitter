@@ -1,0 +1,43 @@
+.navbar {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 10px;
+
+  .navbar-logo {
+    margin-bottom: 30px;
+  }
+
+  .navbar-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+
+    img {
+      margin-right: 16px;
+    }
+
+    &.active {
+      h5 {
+        color: var(--brand-color);
+      }
+    }
+  }
+
+  .navbar-item .medium {
+    color: var(--gray-800);
+  }
+
+  .navbar-button {
+    justify-content: center;
+    padding: 8px 24px;
+    background: var(--brand-color);
+    border-radius: 50px;
+
+    button {
+      color: var(--white);
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+}

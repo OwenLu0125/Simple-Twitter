@@ -1,0 +1,37 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100%;
+  padding: 20px;
+  gap: 8px;
+
+  .modalBody {
+    display: flex;
+    align-items: center;
+
+    .tweetInput {
+      font-weight: 400;
+      color: var(--Secondary);
+      padding: 8px;
+    }
+  }
+  .modalFooter {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-top: auto;
+
+    .characterLimit {
+      padding: 10px;
+      margin-right: 25px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--Error);
+    }
+
+    .orangeButton {
+      padding: 8px 16px;
+    }
+  }
+}

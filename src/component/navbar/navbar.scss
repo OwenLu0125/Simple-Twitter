@@ -5,7 +5,7 @@
   position: relative;
   height: 100vh;
 
-  .navbar-logo {
+  .navbarLogo {
     margin-bottom: 30px;
     padding: 14px 0 0 14px;
 
@@ -15,13 +15,13 @@
     }
   }
 
-  .navbar-info {
+  .navbarInfo {
     display: flex;
     flex-direction: column;
     gap: 42px;
     padding-left: 14px;
 
-    .navbar-item {
+    .navbarItem {
       display: flex;
       align-items: center;
       gap: 20px;
@@ -43,7 +43,7 @@
     }
   }
 
-  .navbar-button {
+  .navbarButton {
     display: flex;
     justify-content: center;
     width: 100%;
