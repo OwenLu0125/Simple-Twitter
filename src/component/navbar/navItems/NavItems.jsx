@@ -10,7 +10,7 @@ const NavbarItem = ({ path, icon, activeIcon, text, isActive, onClick }) => {
       exact="true"
       to={`/${path}`}
       className={`navbarItem ${isActive ? "active" : ""}`}
-      activeClassName="active"
+      activeclassname="active"
       onClick={() => onClick(path)}
     >
       <img src={Icon} alt={path} />

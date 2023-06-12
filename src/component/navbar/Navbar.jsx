@@ -11,7 +11,6 @@ import NavbarSettingIcon from "../../assets/setting.svg";
 import NavbarSettingIconActive from "../../assets/settingActive.svg";
 import "./Navbar.scss";
 
-
 const navItems = [
   {
     path: "mainPage",
@@ -78,10 +77,7 @@ const Navbar = () => {
           <button>推文</button>
         </div>
       </div>
-      <PopupModal
-        open={showModal}
-        onClose={handleCloseModal}
-      />
+      {showModal && <PopupModal open={showModal} onClose={handleCloseModal} />}
     </div>
   );
 };

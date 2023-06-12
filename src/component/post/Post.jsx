@@ -23,7 +23,7 @@ const Post = () => {
       <hr />
       <div className="postContent">
         <div className="postBox">
-          <img src={PostPhoto} alt="User Avatar" className="postAvatar" />
+          <img src={PostPhoto} alt="User Avatar" className="userAvatar" />
           <div className="postTextContainer">
             <input
               type="text"
@@ -34,6 +34,7 @@ const Post = () => {
             />
           </div>
         </div>
+        {/* 點擊推文按鈕後可以新增tweet，等待api串接 */}
         <button className="button orangeButton">推文</button>
       </div>
       <hr className="thickBar" />

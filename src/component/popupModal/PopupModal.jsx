@@ -55,7 +55,9 @@ const PopupModal = ({ open, onClose }) => {
           />
         </div>
         <div className="modalFooter">
+          {/* error message 在點擊推文後出現(若超過140字) */}
           <p className="characterLimit">字數不可超過 140 字</p>
+          {/* 點擊推文按鈕後可以新增tweet，等待api串接 */}
           <button className="orangeButton" onClick={handlePopupClose}>
             推文
           </button>
