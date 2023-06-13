@@ -70,13 +70,13 @@ export const AuthProvider = ({ children }) => {
           }
           return success;
         },
-        login: async (data) => {
-          const { success, token, user } = await login({
-            useremail: data.useremail,
+        adminLogin: async (data) => {
+          const { success, token } = await adminLogin({
+            account: data.account,
             password: data.password,
           });
-          const tempPayload = user;
-          console.log(user);
+          const tempPayload = decodeToken(token);
+          console.log(token);
           if (tempPayload) {
             setPayload(tempPayload);
             setIsAuthenticated(true);
