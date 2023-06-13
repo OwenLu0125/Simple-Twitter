@@ -6,6 +6,7 @@ import "./PopupModal.scss";
 
 const PopupModal = ({ open, onClose }) => {
   const [tweetText, setTweetText] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleTweetTextChange = ({ target: { value } }) => {
     setTweetText(value);
@@ -14,6 +15,16 @@ const PopupModal = ({ open, onClose }) => {
   const handlePopupClose = () => {
     setTweetText("");
     onClose();
+  };
+
+  const handleTweet = () => {
+    if (tweetText.length > 140) {
+      setErrorMessage("字數不可超過140字");
+    } else {
+      // 执行推文操作
+      setErrorMessage(""); // 清空错误消息
+      onClose();
+    }
   };
 
   const popupContentStyle = {
@@ -55,12 +66,11 @@ const PopupModal = ({ open, onClose }) => {
           />
         </div>
         <div className="modalFooter">
-          {/* error message 在點擊推文後出現(若超過140字) */}
-          <p className="characterLimit">字數不可超過 140 字</p>
-          {/* 點擊推文按鈕後可以新增tweet，等待api串接 */}
-          <button className="orangeButton" onClick={handlePopupClose}>
+          {errorMessage && <p className="characterLimit">{errorMessage}</p>}
+          <button className="orangeButton" onClick={handleTweet}>
             推文
           </button>
+          {/* 點擊推文按鈕後可以新增tweet，等待api串接 */}
         </div>
       </div>
     </Popup>
