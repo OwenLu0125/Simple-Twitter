@@ -1,13 +1,18 @@
-import Navbar from '../../component/navbar/Navbar'
+import Navbar from '../../component/navbar/Navbar';
 import PopularList from '../../component/popularList/PopularList';
 import Post from '../../component/post/Post';
 import TweetsList from '../../component/tweets/TweetList';
 import './MainPage.scss';
 import { getTweets } from '../../api/tweets';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Main = () => {
   const [tweets, setTweets] = useState([]);
+  const navigate = useNavigate();
+
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     const getTweetsAsync = async () => {
@@ -20,6 +25,12 @@ const Main = () => {
     };
     getTweetsAsync();
   }, []);
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/login');
+    }
+  }, [navigate, isAuthenticated]);
 
   return (
     <div className="mainContainer">
