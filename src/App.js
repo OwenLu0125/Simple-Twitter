@@ -5,10 +5,11 @@ import LoginPage from './page/LoginPage/LoginPage';
 import RegistPage from './page/RegistPage/RegistPage';
 import LoginAdmin from './page/LoginAdmin/LoginAdmin';
 import SettingPage from './page/SettingPage/SettingPage';
+import UsersDashboard from './page/UsersDashboard/UsersDashboard';
+import AdminMain from './page/AdminMain/AdminMain';
 import './base.scss';
 import './reset.scss';
 import { AuthProvider } from './contexts/AuthContext';
-
 
 /* import {LoginPage, MainPage, RegistPage} from './page' */
 function App() {
@@ -19,10 +20,12 @@ function App() {
           <Routes>
             <Route path="/mainPage" element={<MainPage />} />
             <Route path="/user/self" element={<UserSelf />} />
-            <Route path="/login-admin" element={<LoginAdmin />} />
+            <Route path="/login_admin" element={<LoginAdmin />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<RegistPage />} />
-            <Route path="account-setting" element={<SettingPage />} />
+            <Route path="/settings" element={<SettingPage />} />
+            <Route path="/admin_main" element={<AdminMain />} />
+            <Route path="/admin_users" element={<UsersDashboard />} />
           </Routes>
         </AuthProvider>
         {/* 
