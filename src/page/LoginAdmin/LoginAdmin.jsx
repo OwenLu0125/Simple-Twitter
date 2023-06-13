@@ -1,8 +1,56 @@
 import AuthInput from '../../component/authInput/AuthInput';
 import siteLogo from '../../assets/logo.svg';
 import '../LoginAdmin/LoginAdmin.scss';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import { useAuth } from '../../contexts/AuthContext';
 
 const LoginAdmin = () => {
+  const [account, setAccount] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
+  const { adminLogin, isAuthenticated, currentMember } = useAuth();
+
+  const handleClick = async () => {
+    if (account.length === 0) {
+      return;
+    }
+    if (password.length === 0) {
+      return;
+    }
+    const success = await adminLogin({
+      account,
+      password,
+    });
+    if (success) {
+      Swal.fire({
+        position: 'top',
+        title: 'Login Successfully!',
+        timer: 1000,
+        icon: 'success',
+        showConfirmButton: false,
+      });
+
+      return;
+    }
+
+    Swal.fire({
+      position: 'top',
+      title: 'Invalid Login',
+      timer: 1000,
+      icon: 'error',
+      showConfirmButton: false,
+    });
+  };
+
+  useEffect(() => {
+    if (isAuthenticated && currentMember.role === 'admin') {
+      navigate('/admin_main');
+    }
+  }, [navigate, isAuthenticated, currentMember]);
+
   return (
     <div className="loginAdminContainer">
       <div>
@@ -10,18 +58,28 @@ const LoginAdmin = () => {
       </div>
       <h1 className="title">後台登入</h1>
       <div className="inputContainer">
-        <AuthInput label="帳號" placeholder="請輸入帳號" value="" />
+        <AuthInput
+          label="帳號"
+          placeholder="請輸入帳號"
+          value={account}
+          onChange={(nameInputValue) => setAccount(nameInputValue)}
+        />
 
         <AuthInput
           type="password"
           label="密碼"
           placeholder="請輸入密碼"
-          value=""
+          value={password}
+          onChange={(passwordInputValue) => setPassword(passwordInputValue)}
         />
       </div>
-      <button className="btn">登入</button>
+      <button className="btn" onClick={handleClick}>
+        登入
+      </button>
       <div className="switchSec">
-        <span className="adminSwitch">前台登入</span>
+        <Link to="/login">
+          <span className="adminSwitch">前台登入</span>
+        </Link>
       </div>
     </div>
   );
