@@ -7,6 +7,7 @@ import LoginAdmin from './page/LoginAdmin/LoginAdmin';
 import SettingPage from './page/SettingPage/SettingPage';
 import UsersDashboard from './page/UsersDashboard/UsersDashboard';
 import AdminMain from './page/AdminMain/AdminMain';
+import HomePage from './page/HomePage/HomePage';
 import './base.scss';
 import './reset.scss';
 import { AuthProvider } from './contexts/AuthContext';
@@ -18,6 +19,7 @@ function App() {
       <div className="app">
         <AuthProvider>
           <Routes>
+            <Route path="*" element={<HomePage />} />
             <Route path="/mainPage" element={<MainPage />} />
             <Route path="/user/self" element={<UserSelf />} />
             <Route path="/login_admin" element={<LoginAdmin />} />
