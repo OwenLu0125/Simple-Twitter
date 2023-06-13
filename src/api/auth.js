@@ -2,12 +2,12 @@ import axios from 'axios';
 
 const authURL = 'https://infinite-dawn-77240.herokuapp.com/api';
 
-export const login = async ({ useremail, password }) => {
+export const login = async ({ account, password }) => {
   try {
     const {
       data: { data },
     } = await axios.post(`${authURL}/signin`, {
-      email: useremail,
+      account,
       password,
     });
 
@@ -23,22 +23,50 @@ export const login = async ({ useremail, password }) => {
   }
 };
 
-export const register = async ({ username, email, password }) => {
+export const adminLogin = async ({ account, password }) => {
   try {
     const {
       data: { data },
-    } = await axios.post(`${authURL}/register`, {
-      username,
-      email,
+    } = await axios.post(`${authURL}/admin/signin`, {
+      account,
       password,
     });
-    const { token } = data;
 
+    console.log(data);
+
+    const { token } = data;
     if (token) {
       return { success: true, ...data };
     }
-
     return data;
+  } catch (error) {
+    console.error('[Login Failed]:', error);
+  }
+};
+
+export const register = async ({
+  name,
+  email,
+  account,
+  password,
+  passwordCheck,
+}) => {
+  try {
+    const { data } = await axios.post(`${authURL}/signup`, {
+      name,
+      email,
+      account,
+      password,
+      passwordCheck,
+    });
+
+    console.log(data);
+
+    if (data.status === 'success') {
+      return { success: true };
+    }
+
+    return data.data;
   } catch (error) {
     console.error('[Register Failed]: ', error);
   }
