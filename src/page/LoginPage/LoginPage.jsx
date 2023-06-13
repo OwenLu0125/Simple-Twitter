@@ -7,21 +7,21 @@ import Swal from 'sweetalert2';
 import { useAuth } from '../../contexts/AuthContext';
 
 const LoginPage = () => {
-  const [useremail, setUserEmail] = useState('');
+  const [account, setAccount] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const { login, isAuthenticated } = useAuth();
+  const { login, isAuthenticated, currentMember } = useAuth();
 
   const handleClick = async () => {
-    if (useremail.length === 0) {
+    if (account.length === 0) {
       return;
     }
     if (password.length === 0) {
       return;
     }
     const success = await login({
-      useremail,
+      account,
       password,
     });
     if (success) {
@@ -46,10 +46,10 @@ const LoginPage = () => {
   };
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (isAuthenticated && currentMember.role === 'user') {
       navigate('/mainpage');
     }
-  }, [navigate, isAuthenticated]);
+  }, [navigate, isAuthenticated, currentMember]);
 
   return (
     <div className="loginContainer">
@@ -60,9 +60,9 @@ const LoginPage = () => {
       <div className="inputContainer">
         <AuthInput
           label="帳號"
-          value={useremail}
+          value={account}
           placeholder={'請輸入帳號'}
-          onChange={(nameInputValue) => setUserEmail(nameInputValue)}
+          onChange={(accountInputValue) => setAccount(accountInputValue)}
         />
 
         <AuthInput
@@ -81,7 +81,9 @@ const LoginPage = () => {
           <span className="signupSwitch">註冊</span>
         </Link>
         <span className="dot"></span>
-        <span className="adminSwitch">後台登入</span>
+        <Link to="/login_admin">
+          <span className="adminSwitch">後台登入</span>
+        </Link>
       </div>
     </div>
   );
