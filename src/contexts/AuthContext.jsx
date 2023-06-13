@@ -44,14 +44,32 @@ export const AuthProvider = ({ children }) => {
         currentMember: payload && {
           id: payload.id,
           name: payload.name,
+          role: payload.role,
         },
+
         register: async (data) => {
-          const { success, token, user } = await register({
+          const { success } = await register({
             username: data.username,
             email: data.email,
+            account: data.account,
+            password: data.password,
+            passwordCheck: data.passwordCheck,
+          });
+
+          if (success) {
+            setIsAuthenticated(true);
+          } else {
+            setIsAuthenticated(false);
+          }
+          return success;
+        },
+        login: async (data) => {
+          const { success, token } = await login({
+            account: data.account,
             password: data.password,
           });
-          const tempPayload = user;
+          const tempPayload = decodeToken(token);
+          console.log(token);
           if (tempPayload) {
             setPayload(tempPayload);
             setIsAuthenticated(true);
