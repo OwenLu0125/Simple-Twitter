@@ -1,15 +1,14 @@
-import { login, register, checkPermission } from '../api/auth';
+import { login, register, adminLogin, checkPermission } from '../api/auth';
 import { createContext, useState, useEffect, useContext } from 'react';
-//IMPORTANT 之後再確認是否可用jwt去解析token去撈user資料
-//import * as jwt from 'jsonwebtoken';
-//IMPORTANT 驗面切換驗證token, 之後要做
-//import { useLocation } from 'react-router-dom';
+import { decodeToken } from 'react-jwt';
+import { useLocation } from 'react-router-dom';
 
 const defaultAuthContext = {
   isAuthenticated: false,
   currentMember: null,
   register: null,
   login: null,
+  adminLogin: null,
   logout: null,
 };
 
