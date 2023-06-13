@@ -19,31 +19,24 @@ export const useAuth = () => useContext(AuthContext);
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [payload, setPayload] = useState(null);
-  //IMPORTANT 驗面切換驗證token, 之後要做
-  // const { pathname } = useLocation();
+  const { pathname } = useLocation();
 
-  // useEffect(() => {
+  //IMPORTANT 之後還要跟後端確認是否有做/test-token api, 然後再作修改
+  useEffect(() => {
+    const checkTokenIsValid = async () => {
+      const authToken = localStorage.getItem('authToken');
+      if (authToken) {
+        setIsAuthenticated(true);
+        const tempPayload = decodeToken(authToken);
+        setPayload(tempPayload);
+      } else {
+        setIsAuthenticated(false);
+        setPayload(null);
+      }
+    };
 
-  //   const checkTokenIsValid = async () => {
-  //     const authToken = localStorage.getItem('authToken');
-  //     if (!authToken) {
-  //       setIsAuthenticated(false);
-  //       setPayload(null);
-  //       return;
-  //     }
-  //     const result = await checkPermission(authToken);
-  //     if (result) {
-  //       setIsAuthenticated(true);
-  //       const tempPayload = jwt.decode(authToken);
-  //       setPayload(tempPayload);
-  //     } else {
-  //       setIsAuthenticated(false);
-  //       setPayload(null);
-  //     }
-  //   };
-
-  //   checkTokenIsValid();
-  // }, [pathname]);
+    checkTokenIsValid();
+  }, [pathname]);
 
   return (
     <AuthContext.Provider
