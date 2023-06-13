@@ -29,7 +29,7 @@ const navItems = [
     text: "個人資料",
   },
   {
-    path: "settings",
+    path: "account-setting",
     icon: {
       default: NavbarSettingIcon,
       active: NavbarSettingIconActive,
