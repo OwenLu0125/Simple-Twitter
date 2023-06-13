@@ -85,7 +85,7 @@ const EditPopupModal = ({ open, onClose }) => {
     >
       <div className="editModal">
         <div className="modalHeader">
-          <img src={CloseIcon} alt="close" onClick={handlePopupClose} />
+          <img src={CloseIcon} alt="close" className="close" onClick={handlePopupClose} />
           <h5 className="medium">編輯個人資料</h5>
           <button className="orangeButton" onClick={handleSave}>
             儲存

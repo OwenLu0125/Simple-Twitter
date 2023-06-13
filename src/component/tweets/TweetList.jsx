@@ -1,6 +1,5 @@
 import React from "react";
 import Tweet from "./tweetList/Tweet";
-import grayLogo from "../../assets/logoGray.svg";
 
 const TweetsList = ({ tweets }) => {
   // const tweets = [
