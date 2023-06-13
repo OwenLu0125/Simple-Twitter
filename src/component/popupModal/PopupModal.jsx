@@ -58,7 +58,7 @@ const PopupModal = ({ open, onClose }) => {
         <hr />
         <div className="modalBody">
           <img src={UserPhotoIcon} alt="avatar" className="userAvatar" />
-          <input
+          <textarea
             className="tweetInput"
             value={tweetText}
             onChange={handleTweetTextChange}

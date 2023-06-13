@@ -8,12 +8,20 @@
 
   .modalBody {
     display: flex;
-    align-items: center;
+    height: 100%;
+
+    .userAvatar{
+      height: 50px;
+      width: 50px;
+    }
 
     .tweetInput {
+      width: 100%;
       font-weight: 400;
       color: var(--Secondary);
       padding: 8px;
+      border: none;
+      resize: none;
     }
   }
   .modalFooter {
