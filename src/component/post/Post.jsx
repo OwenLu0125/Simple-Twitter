@@ -32,9 +32,7 @@ const Post = () => {
             <input
               type="text"
               className="postTextInput"
-              value={postContent}
-              onChange={handlePostContentChange}
-              onClick={handlePostContentClick}
+              placeholder={'有什麼新鮮事？'}
             />
           </div>
         </div>
@@ -44,13 +42,7 @@ const Post = () => {
         </button>
       </div>
       <hr className="thickBar" />
-      {showModal && (
-        <PopupModal
-          setTweets={setTweets}
-          open={showModal}
-          onClose={handleCloseModal}
-        />
-      )}
+      {showModal && <PopupModal open={showModal} onClose={handleCloseModal} />}
     </div>
   );
 };
