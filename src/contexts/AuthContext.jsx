@@ -69,7 +69,7 @@ export const AuthProvider = ({ children }) => {
             password: data.password,
           });
           const tempPayload = decodeToken(token);
-          console.log(token);
+
           if (tempPayload) {
             setPayload(tempPayload);
             setIsAuthenticated(true);
