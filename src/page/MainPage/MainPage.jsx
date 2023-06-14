@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
-
 const Main = () => {
   const [tweets, setTweets] = useState([]);
   const navigate = useNavigate();
@@ -35,10 +34,10 @@ const Main = () => {
 
   return (
     <div className="mainContainer">
-      <Navbar setTweets={setTweets} />
+      <Navbar />
       <div className="mainContent">
         <div className="postSection">
-          <Post setTweets={setTweets} />
+          <Post />
         </div>
         <div className="tweetsSection">
           <TweetsList tweets={tweets} className="tweetsSection" />
