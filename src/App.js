@@ -9,10 +9,10 @@ import UsersDashboard from './page/UsersDashboard/UsersDashboard';
 import AdminMain from './page/AdminMain/AdminMain';
 import HomePage from './page/HomePage/HomePage';
 import ReplyList from './page/ReplyList/ReplyList';
+import FollowAndFollower from './page/followAndFollower/FollowAndFollower';
 import './base.scss';
 import './reset.scss';
 import { AuthProvider } from './contexts/AuthContext';
-
 
 /* import {LoginPage, MainPage, RegistPage} from './page' */
 function App() {
