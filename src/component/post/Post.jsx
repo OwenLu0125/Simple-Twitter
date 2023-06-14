@@ -1,21 +1,15 @@
-import React, { useState } from "react";
-import PopupModal from "../popupModal/PopupModal";
-import PostPhoto from "../../assets/postPhoto.svg";
-import "./Post.scss";
+import React, { useState } from 'react';
+import PopupModal from '../popupModal/PopupModal';
+import PostPhoto from '../../assets/postPhoto.svg';
+import './Post.scss';
 
-const Post = ({ setTweets }) => {
-  const [postContent, setPostContent] = useState("有什麼新鮮事？");
+const Post = () => {
+  //const [postContent, setPostContent] = useState('');
   const [showModal, setShowModal] = useState(false);
 
-  const handlePostContentChange = (e) => {
-    setPostContent(e.target.value);
-  };
-
-  const handlePostContentClick = () => {
-    if (postContent === "有什麼新鮮事？") {
-      setPostContent("");
-    }
-  };
+  // const handlePostContentChange = (e) => {
+  //   setPostContent(e.target.value);
+  // };
 
   const handleOpenModal = () => {
     setShowModal(true);
