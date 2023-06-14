@@ -96,18 +96,12 @@ const Navbar = () => {
           />
         ))}
       </div>
-      {activeItem.includes("admin") ? null : (
+      {activeItem.includes('admin') ? null : (
         <div className="navbarItem navbarButton" onClick={handleOpenModal}>
           <button>推文</button>
         </div>
       )}
-      {showModal && (
-        <PopupModal
-          setTweets={setTweets}
-          open={showModal}
-          onClose={handleCloseModal}
-        />
-      )}
+      {showModal && <PopupModal open={showModal} onClose={handleCloseModal} />}
       <div className="logoutBtn">
         <img src={NavbarLogoutIcon} alt="" />
         <h5 className="medium">登出</h5>
