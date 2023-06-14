@@ -76,7 +76,7 @@ const Navbar = () => {
     setActiveItem(item);
   };
 
-  const loopMenuItems = activeItem.includes("admin") ? adminNavItems : navItems;
+  const loopMenuItems = activeItem.includes('admin') ? adminNavItems : navItems;
 
   return (
     <div className="navbar">
