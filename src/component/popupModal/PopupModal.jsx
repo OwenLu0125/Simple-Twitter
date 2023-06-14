@@ -1,60 +1,60 @@
-import React, { useState } from "react";
-import Popup from "reactjs-popup";
-import CloseIcon from "../../assets/closeIcon.svg";
-import UserPhotoIcon from "../../assets/postPhoto.svg";
-import { postTweet } from "../../api/tweets";
-import "./PopupModal.scss";
+import React, { useState } from 'react';
+import Popup from 'reactjs-popup';
+import CloseIcon from '../../assets/closeIcon.svg';
+import UserPhotoIcon from '../../assets/postPhoto.svg';
+import { postTweet } from '../../api/tweets';
+import './PopupModal.scss';
 
-const PopupModal = ({ open, onClose, setTweets }) => {
-  const [tweetText, setTweetText] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+const PopupModal = ({ open, onClose }) => {
+  const [tweetText, setTweetText] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-  const handleTweetTextChange = ({ target: { value } }) => {
-    setTweetText(value);
+  const handleTweetTextChange = (event) => {
+    setTweetText(event.target.value);
   };
 
   const handlePopupClose = () => {
-    setTweetText("");
+    setTweetText('');
     onClose();
   };
 
   const handleTweet = async () => {
     if (tweetText.length > 140) {
-      setErrorMessage("字數不可超過140字");
-    } else {
-      try {
-        const tweetData = {
-          description: tweetText,
-        };
+      setErrorMessage('字數不可超過140字');
+      return;
+    }
 
-        const response = await postTweet(tweetData);
-        console.log("推文已發布:", response);
+    if (tweetText.length === 0) {
+      setErrorMessage('內容不可空白');
+      return;
+    }
 
-        setTweets((prevTweets) => [response.tweet.description, ...prevTweets]);
+    try {
+      const response = await postTweet({ tweetText });
+      console.log('推文已發布:', response);
 
-        setTweetText("");
-        setErrorMessage("");
+      setTweetText('');
+      setErrorMessage('');
 
-        onClose();
-        window.location.reload();//可在優化
-      } catch (error) {
-        console.error("發佈推文失败:", error);
-      }
+      onClose();
+      window.location.reload(); //可在優化
+    } catch (error) {
+      console.error('發佈推文失败:', error);
     }
   };
   const popupContentStyle = {
-    position: "absolute",
-    top: "56px",
-    left: "50%",
-    width: "634px",
-    height: "300px",
-    borderRadius: "14px",
-    background: "var(--white)",
-    transform: "translateX(-50%)",
+    position: 'absolute',
+    top: '56px',
+    left: '50%',
+    width: '634px',
+    height: '300px',
+    borderRadius: '14px',
+    background: 'var(--white)',
+    transform: 'translateX(-50%)',
   };
 
   const overlayStyle = {
-    background: "rgba(0, 0, 0, 0.5)",
+    background: 'rgba(0, 0, 0, 0.5)',
   };
 
   return (
