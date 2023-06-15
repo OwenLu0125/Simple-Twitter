@@ -35,6 +35,16 @@
       }
     }
 
+    .replyText {
+      padding-top: 8px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--Secondary);
+      span {
+        color: var(--brand-color);
+      }
+    }
+
     .tweetText {
       padding: 10px 0;
     }
