@@ -10,6 +10,7 @@ import NavbarUserIconActive from '../../assets/userInfoActive.svg';
 import NavbarSettingIcon from '../../assets/setting.svg';
 import NavbarSettingIconActive from '../../assets/settingActive.svg';
 import NavbarLogoutIcon from '../../assets/logout.svg';
+import { useAuth } from '../../contexts/AuthContext';
 import './Navbar.scss';
 
 const navItems = [
@@ -63,6 +64,11 @@ const Navbar = () => {
   const location = useLocation();
   const { pathname } = location;
   const [activeItem, setActiveItem] = useState(pathname.substring(1));
+  const { logout } = useAuth();
+
+  const handleClick = () => {
+    logout();
+  };
 
   const handleOpenModal = () => {
     setShowModal(true);
@@ -104,7 +110,9 @@ const Navbar = () => {
       {showModal && <PopupModal open={showModal} onClose={handleCloseModal} />}
       <div className="logoutBtn">
         <img src={NavbarLogoutIcon} alt="" />
-        <h5 className="medium">登出</h5>
+        <h5 className="medium" onClick={handleClick}>
+          登出
+        </h5>
       </div>
     </div>
   );
