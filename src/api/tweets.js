@@ -59,3 +59,13 @@ export const getUserRepliedTweets = async (userId) => {
     console.error('[Get User Replied Tweets failed]: ', error);
   }
 };
+
+export const getUserLikes = async (userId) => {
+  try {
+    const res = await axiosInstance.get(`${baseUrl}/users/${userId}/likes`);
+    console.log(res.data);
+    return res.data;
+  } catch (error) {
+    console.error("[Get User Likes failed]: ", error);
+  }
+};
