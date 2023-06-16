@@ -1,0 +1,129 @@
+{
+    "users": [
+        {
+            "id": 34,
+            "name":"Owen1",
+            "account": "user3",
+            "email": "user3@example.com",
+            "avatar": null,
+            "introduction": null,
+            "role": "user",
+            "banner": "https://i.imgur.com/jsrSDDm.png",
+            "createdAt": "2023-06-14T13:07:11.000Z",
+            "updatedAt": "2023-06-14T13:07:11.000Z",
+            "Followers": [
+                {
+                    "id": 24,
+                    "name": "user2touser3",
+                    "account": "user2",
+                    "email": "user2@example.com",
+                    "avatar": null,
+                    "introduction": "fdsafasdf",
+                    "role": "user",
+                    "banner": "https://i.imgur.com/jsrSDDm.png",
+                    "createdAt": "2023-06-14T13:07:11.000Z",
+                    "updatedAt": "2023-06-15T06:35:25.000Z",
+                    "Followship": {
+                        "followerId": 24,
+                        "followingId": 34,
+                        "createdAt": "2023-06-14T16:20:22.000Z",
+                        "updatedAt": "2023-06-14T16:20:22.000Z"
+                    }
+                }
+            ],
+            "followersCount": 1,
+            "isFollowed": true
+        },
+        {
+            "id": 4,
+            "name": "Owen2",
+            "account": "root",
+            "email": "root@example.com",
+            "avatar": null,
+            "introduction": null,
+            "role": "admin",
+            "banner": "https://i.imgur.com/jsrSDDm.png",
+            "createdAt": "2023-06-14T13:07:11.000Z",
+            "updatedAt": "2023-06-14T13:07:11.000Z",
+            "Followers": [],
+            "followersCount": 0,
+            "isFollowed": false
+        },
+        {
+            "id": 14,
+            "name": "Owen3",
+            "account": "Owen003",
+            "email": "user1@example.com",
+            "avatar": null,
+            "introduction": null,
+            "role": "user",
+            "banner": "https://i.imgur.com/jsrSDDm.png",
+            "createdAt": "2023-06-14T13:07:11.000Z",
+            "updatedAt": "2023-06-14T13:07:11.000Z",
+            "Followers": [],
+            "followersCount": 0,
+            "isFollowed": false
+        },
+        {
+            "id": 24,
+            "name": "Owen4",
+            "account": "user2",
+            "email": "user2@example.com",
+            "avatar": null,
+            "introduction": "fdsafasdf",
+            "role": "user",
+            "banner": "https://i.imgur.com/jsrSDDm.png",
+            "createdAt": "2023-06-14T13:07:11.000Z",
+            "updatedAt": "2023-06-15T06:35:25.000Z",
+            "Followers": [],
+            "followersCount": 0,
+            "isFollowed": false
+        },
+        {
+            "id": 44,
+            "name": "Owen5",
+            "account": "user4",
+            "email": "user4@example.com",
+            "avatar": null,
+            "introduction": null,
+            "role": "user",
+            "banner": "https://i.imgur.com/jsrSDDm.png",
+            "createdAt": "2023-06-14T13:07:11.000Z",
+            "updatedAt": "2023-06-14T13:07:11.000Z",
+            "Followers": [],
+            "followersCount": 0,
+            "isFollowed": false
+        },
+        {
+            "id": 54,
+            "name": "Owen6",
+            "account": "user5",
+            "email": "user5@example.com",
+            "avatar": null,
+            "introduction": null,
+            "role": "user",
+            "banner": "https://i.imgur.com/jsrSDDm.png",
+            "createdAt": "2023-06-14T13:07:11.000Z",
+            "updatedAt": "2023-06-14T13:07:11.000Z",
+            "Followers": [],
+            "followersCount": 0,
+            "isFollowed": false
+        },
+        {
+            "id": 64,
+            "name": null,
+            "account": "user6",
+            "email": "user6@export.com",
+            "avatar": null,
+            "introduction": null,
+            "role": null,
+            "banner": "https://i.imgur.com/jsrSDDm.png",
+            "createdAt": "2023-06-14T14:55:48.000Z",
+            "updatedAt": "2023-06-14T14:55:48.000Z",
+            "Followers": [],
+            "followersCount": 0,
+            "isFollowed": false
+        }
+    ]
+}
+

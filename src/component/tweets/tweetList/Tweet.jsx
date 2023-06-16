@@ -15,6 +15,8 @@ const Tweet = ({
   comments,
   tweetId,
   likes,
+  replyTo,
+  hideFooter,
 }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [count, setCount] = useState(likes);
@@ -50,28 +52,37 @@ const Tweet = ({
             <span className="dot" />
             <span className="tweetPostTime">{postTime}</span>
           </div>
-          <div
+
+          {replyTo && (
+            <div className="replyText">
+              回覆 <span>@{replyTo}</span>
+            </div>
+          )}
+           <div
             className="tweetText"
             onClick={() => {
               checkItemId(tweetId);
               navigate('/reply_list');
             }}
-          >
-            {content}
-          </div>
+          >{content}</div>
           <div className="tweetFooter">
-            <div className="tweetComments">
-              <img src={commitIcon} alt="commit icon" />
-              <span className="commentCount">{comments}</span>
-            </div>
-            <div className="tweetLikes" onClick={handleLike}>
-              <img
-                src={heartIcon}
-                alt="heart icon"
-                className={`heartIcon ${isLiked ? 'liked' : ''}`}
-              />
-              <span className="likeCount">{count}</span>
-            </div>
+            {!hideFooter && (
+              <>
+                <div className="tweetComments">
+                  <img src={commitIcon} alt="commit icon" />
+                  <span className="commentCount">{comments}</span>
+                </div>
+                <div className="tweetLikes" onClick={handleLike}>
+                  <img
+                    src={heartIcon}
+                    alt="heart icon"
+                    className={`heartIcon ${isLiked ? "liked" : ""}`}
+                  />
+                  <span className="likeCount">{count}</span>
+                </div>
+              </>
+            )}
+
           </div>
         </div>
       </div>
