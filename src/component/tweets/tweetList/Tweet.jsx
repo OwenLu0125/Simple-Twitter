@@ -1,9 +1,10 @@
-import React, { useState } from "react";
-import { likeTweet, unlikeTweet } from "../../../api/likeAndUnlike";
-import commitIcon from "../../../assets/commit.svg";
-import heartIcon from "../../../assets/heart.svg";
-
-import "./Tweet.scss";
+import React, { useState } from 'react';
+import { likeTweet, unlikeTweet } from '../../../api/likeAndUnlike';
+import commitIcon from '../../../assets/commit.svg';
+import heartIcon from '../../../assets/heart.svg';
+import './Tweet.scss';
+import { useId } from '../../../contexts/IdContext';
+import { useNavigate } from 'react-router-dom';
 
 const Tweet = ({
   logo,
@@ -17,6 +18,8 @@ const Tweet = ({
 }) => {
   const [isLiked, setIsLiked] = useState(false);
   const [count, setCount] = useState(likes);
+  const { checkItemId } = useId();
+  const navigate = useNavigate();
 
   const handleLike = async () => {
     try {
@@ -31,7 +34,7 @@ const Tweet = ({
         setCount((prevLikes) => prevLikes + 1);
       }
     } catch (error) {
-      console.error("喜歡推文失败:", error);
+      console.error('喜歡推文失败:', error);
     }
     setIsLiked(!isLiked);
   };
@@ -47,7 +50,15 @@ const Tweet = ({
             <span className="dot" />
             <span className="tweetPostTime">{postTime}</span>
           </div>
-          <div className="tweetText">{content}</div>
+          <div
+            className="tweetText"
+            onClick={() => {
+              checkItemId(tweetId);
+              navigate('/reply_list');
+            }}
+          >
+            {content}
+          </div>
           <div className="tweetFooter">
             <div className="tweetComments">
               <img src={commitIcon} alt="commit icon" />
@@ -57,7 +68,7 @@ const Tweet = ({
               <img
                 src={heartIcon}
                 alt="heart icon"
-                className={`heartIcon ${isLiked ? "liked" : ""}`}
+                className={`heartIcon ${isLiked ? 'liked' : ''}`}
               />
               <span className="likeCount">{count}</span>
             </div>
