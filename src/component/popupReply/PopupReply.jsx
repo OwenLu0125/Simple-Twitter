@@ -2,28 +2,57 @@ import { useState } from 'react';
 import Popup from 'reactjs-popup';
 import CloseIcon from '../../assets/closeIcon.svg';
 import profileImg from '../../assets/img/canadian-girl.jpg';
+import { postReply } from '../../api/tweets';
+import { useId } from '../../contexts/IdContext';
+import { useAuth } from '../../contexts/AuthContext';
 import './PopupReply.scss';
 
-const PopupReply = ({ open, onClose }) => {
-  const [tweetText, setTweetText] = useState('');
+const PopupReply = ({ open, onClose, tweet, repliesSet, tweetSet }) => {
+  const [replyMsg, setReplyMsg] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const { currentId } = useId();
+  const { currentMember } = useAuth();
 
   const handleTweetTextChange = ({ target: { value } }) => {
-    setTweetText(value);
+    setReplyMsg(value);
   };
 
   const handlePopupClose = () => {
-    setTweetText('');
+    setReplyMsg('');
     onClose();
   };
 
-  const handleTweet = () => {
-    if (tweetText.length === 0) {
+  const handleTweet = async () => {
+    if (replyMsg.length === 0) {
       setErrorMessage('內容不可空白');
-    } else {
-      // 执行推文操作
-      setErrorMessage(''); // 清空错误消息
+      return;
+    }
+    try {
+      const response = await postReply({ id: currentId, comment: replyMsg });
+      console.log('推文已發布:', response);
+
+      setReplyMsg('');
+      setErrorMessage('');
+
       onClose();
+
+      repliesSet((prev) => {
+        return [
+          ...prev,
+          {
+            ...response.data,
+            User: { ...currentMember },
+          },
+        ];
+      });
+
+      tweetSet((prev) => {
+        return { ...prev, replyCount: prev.replyCount + 1 };
+      });
+
+      //window.location.reload(); //可在優化
+    } catch (error) {
+      console.error('發佈推文失败:', error);
     }
   };
 
@@ -65,13 +94,9 @@ const PopupReply = ({ open, onClose }) => {
               <span className="name">Apple</span>
               <span className="account">@apple</span>
               <span className="dot"></span>
-              <span className="date">3小時</span>
+              <span className="date">{tweet.updatedAt}</span>
             </div>
-            <div className="content">
-              'Vestibulum tristique pharetra lorem id eleifend. Maecenas tempus
-              odio vitae ipsum aliquet ullamcorper. Sed varius commodo odio, id
-              dignissim odio iaculis eu.',
-            </div>
+            <div className="content">{tweet.description}</div>
             <span className="replyTo">@apple</span>
           </div>
         </div>
@@ -79,7 +104,7 @@ const PopupReply = ({ open, onClose }) => {
           <img className="userImg" src={profileImg} alt="avatar" />
           <textarea
             className="tweetInput"
-            value={tweetText}
+            value={replyMsg}
             onChange={handleTweetTextChange}
             placeholder="推你的回覆"
           />
