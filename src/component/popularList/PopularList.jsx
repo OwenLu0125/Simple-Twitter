@@ -1,6 +1,6 @@
-import React from "react";
-import PopularCard from "./PopularCard/PopularCard";
-import "./PopularList.scss";
+import React from 'react';
+import PopularCard from './PopularCard/PopularCard';
+import './PopularList.scss';
 
 /* 等待api串接10名推薦跟隨，順序follower由多到少 */
 
