@@ -17,9 +17,8 @@ const replyData = {
   likeNum: '808',
 };
 
-const MainReply = () => {
+const MainReply = ({ tweet, repliesSet, tweetSet }) => {
   const [showModal, setShowModal] = useState(false);
-
   const handleOpenModal = () => {
     setShowModal(true);
   };
@@ -28,26 +27,28 @@ const MainReply = () => {
     setShowModal(false);
   };
 
+  //const banner = tweet.User.banner;
+
   return (
     <div className="singleReplyBox">
       <div className="replyMainBody">
         <div className="replyContentBox">
-          <img className="userImg" src={replyData.img} alt="user-img" />
+          <img className="userImg" src="" alt="user-img" />
           <div className="replyContent">
-            <span className="name">{replyData.username}</span>
-            <span className="account">{replyData.accountName}</span>
+            <span className="name">*</span>
+            <span className="account">@</span>
           </div>
         </div>
-        <div className="content">{replyData.content}</div>
+        <div className="content">{tweet.description}</div>
         <div className="timestamp">
-          <p>{replyData.postTime}</p>
+          <p>{tweet.updatedAt}</p>
           <span className="dot"></span>
-          <p>{replyData.postDate}</p>
+          <p>{tweet.updatedAt}</p>
         </div>
       </div>
       <div className="countBox">
-        <span className="replyCount">{replyData.replyNum}</span>
-        <span className="likeCount">{replyData.likeNum}</span>
+        <span className="replyCount">{tweet.replyCount}</span>
+        <span className="likeCount">{tweet.LikesCount}</span>
       </div>
       <div className="actionBox">
         <span onClick={handleOpenModal}>
@@ -55,7 +56,15 @@ const MainReply = () => {
         </span>
         <img src={heartIcon} alt="heart" />
       </div>
-      {showModal && <PopupReply open={showModal} onClose={handleCloseModal} />}
+      {showModal && (
+        <PopupReply
+          open={showModal}
+          onClose={handleCloseModal}
+          repliesSet={repliesSet}
+          tweetSet={tweetSet}
+          tweet={tweet}
+        />
+      )}
     </div>
   );
 };
