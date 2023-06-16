@@ -18,7 +18,7 @@ const SingleReply = ({
           <span className="dot" />
           <span className="date">{postTime}</span>
         </div>
-        <span className="replyTo">{replyTo}</span>
+        <span className="replyTo">@{replyTo}</span>
         <div className="content">{content}</div>
       </div>
     </div>
