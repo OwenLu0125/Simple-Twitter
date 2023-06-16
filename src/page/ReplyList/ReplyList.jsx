@@ -50,8 +50,12 @@ const ReplyList = () => {
           </Link>
           <h4 className="medium">推文</h4>
         </div>
-        <MainReply />
-        <ReplyListBox />
+        <MainReply
+          tweet={singleTweet}
+          tweetSet={setSingleTweet}
+          repliesSet={setTweetReplies}
+        />
+        <ReplyListBox replies={tweetReplies} replyTo="" />
       </div>
       <PopularList />
     </div>
