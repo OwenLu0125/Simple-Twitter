@@ -44,7 +44,14 @@ export const AuthProvider = ({ children }) => {
         currentMember: payload && {
           id: payload.id,
           name: payload.name,
+          account: payload.account,
+          email: payload.email,
+          avatar: payload.avatar,
+          introduction: payload.introduction,
           role: payload.role,
+          banner: payload.banner,
+          createdAt: payload.createdAt,
+          updateAT: payload.updateAT,
         },
 
         register: async (data) => {
