@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import EditPopupModal from "../popupModal/editPopupModal/EditPopupModal";
 import { getUserEdit } from "../../api/popupEditModal";
-import "./UserInfo.scss";
 import { useAuth } from "../../contexts/AuthContext";
+import "./UserInfo.scss";
 
 const UserInfo = ({
   avatar,
@@ -13,18 +13,21 @@ const UserInfo = ({
   followingCount,
   followersCount,
   banner,
+  handleUserDataUpdate,
 }) => {
   const { currentMember } = useAuth();
   const [showModal, setShowModal] = useState(false);
   const [userData, setUserData] = useState(null);
   const navigate = useNavigate();
 
+
+
   const handleEditProfileClick = async () => {
     if (!currentMember || !currentMember.id) {
       return;
     }
     const { id } = currentMember;
-    
+
     try {
       const userData = await getUserEdit(id);
       setUserData(userData);
@@ -45,6 +48,8 @@ const UserInfo = ({
   const handleFollowersClick = () => {
     navigate("/follower");
   };
+
+
   return (
     <div className="userInfoContainer">
       <img src={banner} className="background" alt="banner" />
@@ -81,6 +86,7 @@ const UserInfo = ({
           open={showModal}
           onClose={handleClosePopup}
           userData={userData}
+          onUserDataUpdate={handleUserDataUpdate}
         />
       )}
     </div>

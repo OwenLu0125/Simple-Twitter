@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 import {
   getUserLikes,
   getUserRepliedTweets,
   getUserTweets,
-
 } from "../../api/tweets";
 import { useAuth } from "../../contexts/AuthContext";
 import { getPopularList } from "../../api/popularlist";
@@ -20,7 +19,7 @@ import "./UserSelf.scss";
 
 const UserSelf = () => {
   const { currentMember } = useAuth();
-  const [activeTab, setActiveTab] = useState('tweets');
+  const [activeTab, setActiveTab] = useState("tweets");
   const [tweets, setTweets] = useState([]);
   const [replies, setReplies] = useState([]);
   const [likes, setLikes] = useState([]);
@@ -29,6 +28,10 @@ const UserSelf = () => {
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+  };
+
+  const handleUserDataUpdate = (updatedData) => {
+    setUserData(updatedData);
   };
 
   useEffect(() => {
@@ -43,7 +46,7 @@ const UserSelf = () => {
         //console.log(userTweets);
         setTweets(userTweets.map((tweet) => ({ ...tweet })));
       } catch (error) {
-        console.error('獲取用户推文失敗：', error);
+        console.error("獲取用户推文失敗：", error);
       }
 
       try {
@@ -75,7 +78,7 @@ const UserSelf = () => {
       }
       try {
         const user = await getUserPageById(id);
-        console.log(user);
+        //console.log(user);
         setUserData(user);
       } catch (error) {
         console.error("獲取用户信息失敗：", error);
@@ -94,12 +97,11 @@ const UserSelf = () => {
             avatar={userData?.avatar}
             username={userData?.name}
             accountName={userData?.account}
-            bio={
-              /* userData.introduction */ "Sed ipsum consequatur eaque ad repellat reiciendis"
-            }
+            bio={userData?.introduction}
             followingCount={userData?.followingCount}
             followersCount={userData?.followerCount}
             banner={userData?.banner}
+            handleUserDataUpdate={handleUserDataUpdate}
           />
         </div>
         <TabBar
@@ -109,13 +111,13 @@ const UserSelf = () => {
         />
         <hr />
         <div className="tweetsSection">
-          {activeTab === 'tweets' && (
+          {activeTab === "tweets" && (
             <UserTweetsList tweets={tweets} className="tweetsSection" />
           )}
-          {activeTab === 'replies' && (
+          {activeTab === "replies" && (
             <UserRepliesList replies={replies} className="tweetsSection" />
           )}
-          {activeTab === 'likes' && (
+          {activeTab === "likes" && (
             <UserLikesList likes={likes} className="tweetsSection" />
           )}
         </div>

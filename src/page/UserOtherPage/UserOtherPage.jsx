@@ -83,9 +83,7 @@ const UserOther = () => {
             avatar={userData?.avatar}
             username={userData?.name}
             accountName={userData?.account}
-            bio={
-              /* userData.introduction */ "Sed ipsum consequatur eaque ad repellat reiciendis"
-            }
+            bio={userData?.introduction}
             followingCount={userData?.followingCount}
             followersCount={userData?.followerCount}
             banner={userData?.banner}
