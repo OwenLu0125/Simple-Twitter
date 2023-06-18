@@ -15,6 +15,8 @@ const PopularList = ({ popularCards }) => {
             key={card.id}
             userName={card.name ? card.name : "user"}
             account={card.account}
+            isFollowed={card.isFollowed}
+            followerId={card.id}
           />
         ))}
       </div>

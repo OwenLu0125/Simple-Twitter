@@ -1,11 +1,27 @@
 import React, { useState } from "react";
+import {likePopularCard, unlikePopularCard} from '../../../api/popularlist'
 import grayLogo from "../../../assets/logoGray.svg";
 import "./PopularCard.scss";
 
-const PopularCard = ({ userName, account }) => {
-  const [isFollow, setIsFollow] = useState(false);
+const PopularCard = ({ followerId, userName, account, isFollowed }) => {
+  const [isFollow, setIsFollow] = useState(isFollowed);
 
-  const handleFollow = () => {
+    //  加入更新資料的邏輯
+  const handleFollow = async() => {
+    if (isFollow === false) {
+      try {
+        await likePopularCard(followerId);
+      } catch (error) {
+        console.log(error);
+        console.log("likePopularCard failed");
+      }
+    } else {
+      try {
+        await unlikePopularCard(followerId);
+      } catch (error) {
+        console.log(error);
+      }
+    }
     setIsFollow(!isFollow);
   };
 

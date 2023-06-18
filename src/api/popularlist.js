@@ -1,44 +1,47 @@
-import axiosInstance, { baseUrl } from "./axiosInstance";
-/* import axios from 'axios';
-const baseUrl = 'https://infinite-dawn-77240.herokuapp.com/api';
-//const testApi = 'http://localhost:3004/users';
+import axiosInstance, { baseUrl } from './axiosInstance';
 
-// 驗證區
-const axiosInstance = axios.create({
-  baseURL: baseUrl,
-});
-
-axiosInstance.interceptors.request.use(
-  (config) => {
-    const token = localStorage.getItem('authToken');
-    if (token) {
-      config.headers['Authorization'] = `Bearer ${token}`;
-    }
-    return config;
-  },
-  (error) => {
-    console.error(error);
-  }
-);
+/*
+追蹤使用者
+  {{baseUrl}}/followships 
+取消追蹤使用者
+  {{baseUrl}}/followships/:followingId 
  */
-// // 測試用
-// export const getPopularlists = async () => {
-//   try {
-//     const res = await axios.get(`${testApi}`);
-//     console.log(res);
-//     return res.data;
-//   } catch (error) {
-//     console.error('[Get getPopularlist failed]: ', error);
-//   }
-// };
 
-// 正式版
+// 傳入跟隨者名單
 export const getPopularList = async () => {
   try {
     const res = await axiosInstance.get(`${baseUrl}/users/top`);
-    console.log(res.data.users);
+    // console.log(res.data.users);
     return res.data.users;
   } catch (error) {
-    console.error("[Get getPopularList failed]: ", error);
+    console.error('[Get getPopularList failed]: ', error);
+  }
+};
+
+// 傳出要跟隨的id
+export const likePopularCard = async (followerId) => {
+  try {
+    const res = await axiosInstance.post(`${baseUrl}/followships`, {
+      id: `${followerId}`,
+    });
+    // console.log(res.data);
+    return res.data;
+  } catch (error) {
+    console.error('[Like PopularCard failed]: ', error);
+    throw error;
+  }
+};
+
+// 傳出要取消跟隨的id
+export const unlikePopularCard = async (followerId) => {
+  try {
+    const res = await axiosInstance.delete(
+      `${baseUrl}/followships/${followerId} `
+    );
+    console.log(res.data);
+    return res.data;
+  } catch (error) {
+    console.error('[Unlike PopularCard failed]: ', error);
+    throw error;
   }
 };
