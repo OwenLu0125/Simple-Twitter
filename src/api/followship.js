@@ -45,7 +45,7 @@ export const following = async ({ id }) => {
     console.log(res);
     return res;
   } catch (error) {
-    console.error('[Get List failed]: ', error);
+    console.error('[Do followship failed]: ', error);
   }
 };
 
