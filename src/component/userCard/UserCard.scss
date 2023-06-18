@@ -67,7 +67,16 @@
       display: flex;
       gap: 8px;
 
-      p {
+      .follow {
+        font-size: 14px;
+        font-weight: 400;
+        &::after {
+          content: '跟隨中';
+          color: var(--Secondary);
+        }
+      }
+
+      .follower {
         font-size: 14px;
         font-weight: 400;
         &::after {
