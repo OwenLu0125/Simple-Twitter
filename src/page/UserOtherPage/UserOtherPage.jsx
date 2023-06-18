@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import {
   getUserLikes,
   getUserRepliedTweets,
   getUserTweets,
-} from "../../api/tweets";
-import Header from "../../component/header/Header";
-import Navbar from "../../component/navbar/Navbar";
-import PopularList from "../../component/popularList/PopularList";
-import TabBar from "../../component/tabBar/TabBar";
-import UserOtherItem from "../../component/userInfo/userOther/UserOther";
-import { getPopularList } from "../../api/popularlist.js";
-import { getUserPageById } from "../../api/getUserPage";
-import { useUserId } from "../../contexts/UserIdContext";
-import UserTweetsList from "../../component/userTweetList/UserTweetList";
-import UserRepliesList from "../../component/userRepliesList/UserRepliesList";
-import UserLikesList from "../../component/userLikesList/UserLikesList";
-import "../mainPage/MainPage.scss";
+} from '../../api/tweets';
+import Header from '../../component/header/Header';
+import Navbar from '../../component/navbar/Navbar';
+import PopularList from '../../component/popularList/PopularList';
+import TabBar from '../../component/tabBar/TabBar';
+import UserOtherItem from '../../component/userInfo/userother/UserOther';
+import { getPopularList } from '../../api/popularlist.js';
+import { getUserPageById } from '../../api/getUserPage';
+import { useUserId } from '../../contexts/UserIdContext';
+import UserTweetsList from '../../component/userTweetList/UserTweetList';
+import UserRepliesList from '../../component/userRepliesList/UserRepliesList';
+import UserLikesList from '../../component/userLikesList/UserLikesList';
+import '../mainPage/MainPage.scss';
 
 const UserOther = () => {
   const { userId } = useUserId();
-  const [activeTab, setActiveTab] = useState("tweets");
+  const [activeTab, setActiveTab] = useState('tweets');
   const [tweets, setTweets] = useState([]);
   const [replies, setReplies] = useState([]);
   const [likes, setLikes] = useState([]);
@@ -37,7 +37,7 @@ const UserOther = () => {
         //console.log(userTweets);
         setTweets(userTweets.map((tweet) => ({ ...tweet })));
       } catch (error) {
-        console.error("获取用户推文失败：", error);
+        console.error('获取用户推文失败：', error);
       }
 
       try {
@@ -45,7 +45,7 @@ const UserOther = () => {
         //console.log(userReplies);
         setReplies(userReplies.map((reply) => ({ ...reply })));
       } catch (error) {
-        console.error("獲取用戶資料失败：", error);
+        console.error('獲取用戶資料失败：', error);
       }
 
       try {
@@ -53,14 +53,14 @@ const UserOther = () => {
         console.log(userLikes);
         setLikes(userLikes.map((like) => ({ ...like })));
       } catch (error) {
-        console.error("获取用户喜欢的推文失败：", error);
+        console.error('获取用户喜欢的推文失败：', error);
       }
 
       try {
         const popularCards = await getPopularList();
         setPopularCards(popularCards.map((users) => ({ ...users })));
       } catch (error) {
-        console.error("获取热门列表失败：", error);
+        console.error('获取热门列表失败：', error);
       }
 
       try {
@@ -68,7 +68,7 @@ const UserOther = () => {
         console.log(user);
         setUserData(user);
       } catch (error) {
-        console.error("获取用户信息失败：", error);
+        console.error('获取用户信息失败：', error);
       }
     };
     fetchData();
@@ -84,7 +84,7 @@ const UserOther = () => {
             username={userData?.name}
             accountName={userData?.account}
             bio={
-              /* userData.introduction */ "Sed ipsum consequatur eaque ad repellat reiciendis"
+              /* userData.introduction */ 'Sed ipsum consequatur eaque ad repellat reiciendis'
             }
             followingCount={userData?.followingCount}
             followersCount={userData?.followerCount}
@@ -98,13 +98,13 @@ const UserOther = () => {
         />
         <hr />
         <div className="tweetsSection">
-          {activeTab === "tweets" && (
+          {activeTab === 'tweets' && (
             <UserTweetsList tweets={tweets} className="tweetsSection" />
           )}
-          {activeTab === "replies" && (
+          {activeTab === 'replies' && (
             <UserRepliesList replies={replies} className="tweetsSection" />
           )}
-          {activeTab === "likes" && (
+          {activeTab === 'likes' && (
             <UserLikesList likes={likes} className="tweetsSection" />
           )}
         </div>
