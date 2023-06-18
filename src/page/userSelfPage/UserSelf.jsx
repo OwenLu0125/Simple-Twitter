@@ -34,7 +34,7 @@ const UserSelf = () => {
     const updatedUserData = {
       ...updatedData,
       followingCount: userData.followingCount,
-      followersCount: userData.followersCount,
+      followerCount: userData.followerCount,
     };
     setUserData(updatedUserData);
   };

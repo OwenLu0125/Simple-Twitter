@@ -87,6 +87,7 @@ const UserInfo = ({
           onClose={handleClosePopup}
           userData={userData}
           onUserDataUpdate={handleUserDataUpdate}
+          setUserData={setUserData}
         />
       )}
     </div>

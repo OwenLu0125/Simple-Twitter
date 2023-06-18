@@ -6,13 +6,23 @@ import WhiteCloseIcon from "../../../assets/whiteClose.svg";
 import "./EditPopupModal.scss";
 import { updateUser } from "../../../api/popupEditModal";
 
-const EditPopupModal = ({ open, onClose, userData, onUserDataUpdate }) => {
+const EditPopupModal = ({
+  open,
+  onClose,
+  userData,
+  onUserDataUpdate,
+  setUserData,
+}) => {
   const [username, setUsername] = useState(userData.user.name || "");
   const [intro, setIntro] = useState(userData.user.introduction || "");
   const [backgroundPhotoFile, setBackgroundPhotoFile] = useState(null);
-  const [backgroundPhotoPreview, setBackgroundPhotoPreview] = useState(null);
+  const [backgroundPhotoPreview, setBackgroundPhotoPreview] = useState(
+    userData.user.banner || null
+  );
   const [userPhotoFile, setUserPhotoFile] = useState(null);
-  const [userPhotoPreview, setUserPhotoPreview] = useState(null);
+  const [userPhotoPreview, setUserPhotoPreview] = useState(
+    userData.user.avatar || null
+  );
   const [errorMessageUsername, setErrorMessageUsername] = useState(null);
   const [errorMessageIntro, setErrorMessageIntro] = useState(null);
   const [updatedUserData, setUpdatedUserData] = useState({});
@@ -77,7 +87,11 @@ const EditPopupModal = ({ open, onClose, userData, onUserDataUpdate }) => {
       return;
     }
 
-    if (Object.keys(updatedUserData).length === 0) {
+    if (
+      Object.keys(updatedUserData).length === 0 &&
+      !backgroundPhotoFile &&
+      !userPhotoFile
+    ) {
       onClose();
       return;
     }
@@ -85,12 +99,17 @@ const EditPopupModal = ({ open, onClose, userData, onUserDataUpdate }) => {
     const updatedData = {
       ...userData.user,
       ...updatedUserData,
+      banner: backgroundPhotoFile
+        ? backgroundPhotoPreview
+        : userData.user.banner,
+      avatar: userPhotoFile ? userPhotoPreview : userData.user.avatar,
     };
 
     updateUser(userData.user.id, updatedData)
       .then((response) => {
         console.log("用户信息更新成功:", response);
         onUserDataUpdate(updatedData);
+        setUserData({ ...userData, user: updatedData });
       })
       .catch((error) => {
         console.error("用户信息更新失败:", error);
@@ -219,7 +238,7 @@ const EditPopupModal = ({ open, onClose, userData, onUserDataUpdate }) => {
               className="introInput"
               value={intro}
               onChange={handleIntroChange}
-              placeholder={userData.user.introduction || ""} //要帶入使用者自介
+              placeholder={userData.user.introduction || ""}
             />
             <div className="inputInfo">{intro.length}/160</div>
           </div>
