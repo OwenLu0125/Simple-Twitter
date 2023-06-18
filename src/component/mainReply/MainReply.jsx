@@ -1,23 +1,13 @@
 import profileImg from '../../assets/img/canadian-girl.jpg';
 import commentIcon from '../../assets/commit.svg';
-import heartIcon from '../../assets/heart.svg';
+import emptyHeart from '../../assets/heart.svg';
+import fullHeart from '../../assets/like-heart.svg';
 import PopupReply from '../popupReply/PopupReply';
 import React, { useState } from 'react';
+import { unlikeTweet, likeTweet } from '../../api/likeAndUnlike';
 import './MainReply.scss';
 
-const replyData = {
-  img: profileImg,
-  username: 'John Doe',
-  accountName: '@johndoe',
-  postTime: '上午10:05',
-  postDate: '2021年11月10日',
-  content:
-    'Vestibulum tristique pharetra lorem id eleifend. Maecenas tempus odio vitae ipsum aliquet ullamcorper. Sed varius commodo odio, id dignissim odio iaculis eu.',
-  replyNum: '34',
-  likeNum: '808',
-};
-
-const MainReply = ({ tweet, repliesSet, tweetSet }) => {
+const MainReply = ({ tweet, repliesSet, tweetSet, setTweet }) => {
   const [showModal, setShowModal] = useState(false);
   const handleOpenModal = () => {
     setShowModal(true);
