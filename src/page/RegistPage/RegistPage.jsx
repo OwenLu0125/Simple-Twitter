@@ -11,7 +11,7 @@ const RegistPage = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordCheck, setPasswordCheck] = useState('');
+  const [checkPassword, setCheckPassword] = useState('');
   const navigate = useNavigate();
 
   const { register, isAuthenticated } = useAuth();
@@ -33,22 +33,22 @@ const RegistPage = () => {
       return;
     }
 
-    if (passwordCheck.length === 0) {
+    if (checkPassword.length === 0) {
       return;
     }
 
     const success = await register({
       name,
-      email,
       account,
       password,
-      passwordCheck,
+      checkPassword,
+      email,
     });
 
     if (success) {
       Swal.fire({
         position: 'top',
-        title: 'Signup Successfully!',
+        title: '註冊成功!',
         timer: 1000,
         icon: 'success',
         showConfirmButton: false,
@@ -59,7 +59,7 @@ const RegistPage = () => {
 
     Swal.fire({
       position: 'top',
-      title: 'Invalid Signup',
+      title: '註冊失敗',
       timer: 1000,
       icon: 'error',
       showConfirmButton: false,
@@ -111,9 +111,9 @@ const RegistPage = () => {
         <AuthInput
           type="password"
           label="密碼確認"
-          value={passwordCheck}
+          value={checkPassword}
           onChange={(checkedPasswordInputValue) =>
-            setPasswordCheck(checkedPasswordInputValue)
+            setCheckPassword(checkedPasswordInputValue)
           }
         />
       </div>

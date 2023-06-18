@@ -15,6 +15,11 @@ const ReplyList = () => {
   const [tweetReplies, setTweetReplies] = useState([]);
   const [popularCards, setPopularCards] = useState([]);
   const { currentId } = useId();
+  const tweet = { ...singleTweet };
+
+  const handlePrevPage = () => {
+    window.history.back();
+  };
 
   useEffect(() => {
     const getTweet = async () => {
@@ -59,17 +64,24 @@ const ReplyList = () => {
       <Navbar />
       <div className="subContainer">
         <div className="replyTitleContainer">
-          <Link to="/mainpage">
-            <img className="img" src={ArrowLeft} alt="arrow" />
-          </Link>
+          <img
+            className="img"
+            src={ArrowLeft}
+            alt="arrow"
+            onClick={handlePrevPage}
+          />
           <h4 className="medium">推文</h4>
         </div>
         <MainReply
-          tweet={singleTweet}
+          tweet={{ ...singleTweet }}
           tweetSet={setSingleTweet}
           repliesSet={setTweetReplies}
+          setTweet={setSingleTweet}
         />
-        <ReplyListBox replies={tweetReplies} replyTo="" />
+        <ReplyListBox
+          replies={tweetReplies}
+          replyTo={tweet.tweetOwnerAccount}
+        />
       </div>
       <PopularList popularCards={popularCards} />
     </div>

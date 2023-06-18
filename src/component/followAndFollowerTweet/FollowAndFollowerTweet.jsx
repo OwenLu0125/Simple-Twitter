@@ -1,29 +1,70 @@
-import React, { useState } from "react";
-import grayLogo from "../../assets/logoGray.svg";
-import "./FollowAndFollowerTweet.scss";
+import React, { useState } from 'react';
+import grayLogo from '../../assets/logoGray.svg';
+import './FollowAndFollowerTweet.scss';
+import { following, unfollowing } from '../../api/followship';
 
-const FollowAndFollowerTweet = ({ userName, tweet }) => {
-  const [isFollow, setIsFollow] = useState(false);
-
-  const handleFollow = () => {
-    setIsFollow(!isFollow);
+const FollowAndFollowerTweet = ({
+  index,
+  userName,
+  intro,
+  avatar,
+  followerId,
+  isFollowship,
+  allList,
+  setList,
+  tabStatus,
+}) => {
+  const handleFollow = async () => {
+    if (isFollowship) {
+      try {
+        await unfollowing(String(followerId));
+        const newList = allList.map((user, i) => {
+          if (index === i) {
+            return tabStatus === 'followers'
+              ? { ...user, isFollowed: false }
+              : { ...user, isFollowing: false };
+          } else {
+            return user;
+          }
+        });
+        setList(newList);
+      } catch (error) {
+        console.error(error);
+      }
+    } else {
+      try {
+        await following({ id: String(followerId) });
+        const newList = allList.map((user, i) => {
+          if (index === i) {
+            return tabStatus === 'followers'
+              ? { ...user, isFollowed: true }
+              : { ...user, isFollowing: true };
+          } else {
+            return user;
+          }
+        });
+        setList(newList);
+      } catch (error) {
+        console.error(error);
+      }
+    }
   };
 
   //若url是follow render跟隨者頁面
   return (
     <>
-      <div className="followAndFollowerTweetContainer">
+      <div key={index} className="followAndFollowerTweetContainer">
         <div className="upSection">
-          <img src={grayLogo} alt="logo-gray" className="userLogo" />
+          <img src={avatar} alt="logo-gray" className="userLogo" />
           <h4 className="userName">{userName}</h4>
           <button
-            className={`whiteButton  ${isFollow ? "isFollow" : ""}`}
+            className={`whiteButton  ${isFollowship ? 'isFollow' : ''}`}
             onClick={handleFollow}
           >
-            {isFollow ? "正在跟隨" : "跟隨"}
+            {isFollowship ? '正在跟隨' : '跟隨'}
           </button>
         </div>
-        <h4 className="tweet">{tweet}</h4>
+        <h4 className="tweet">{intro}</h4>
       </div>
       <hr />
     </>

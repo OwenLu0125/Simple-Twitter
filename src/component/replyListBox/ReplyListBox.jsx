@@ -8,7 +8,7 @@ const ReplyListBox = ({ replies, replyTo }) => {
       {replies.map((reply) => (
         <SingleReply
           key={reply.id}
-          img={reply.User.banner}
+          img={reply.User.avatar}
           username={reply.User.name}
           accountName={reply.User.account}
           postTime={reply.updatedAt}

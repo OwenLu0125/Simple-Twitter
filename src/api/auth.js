@@ -44,27 +44,27 @@ export const adminLogin = async ({ account, password }) => {
 
 export const register = async ({
   name,
-  email,
   account,
   password,
-  passwordCheck,
+  checkPassword,
+  email,
 }) => {
   try {
-    const { data } = await axios.post(`${authURL}/signup`, {
+    const { data } = await axios.post(`${authURL}/users`, {
       name,
-      email,
       account,
       password,
-      passwordCheck,
+      checkPassword,
+      email,
     });
 
     console.log(data);
 
-    if (data.status === 'success') {
+    if (data.account) {
       return { success: true };
     }
 
-    return data.data;
+    return data;
   } catch (error) {
     console.error('[Register Failed]: ', error);
   }

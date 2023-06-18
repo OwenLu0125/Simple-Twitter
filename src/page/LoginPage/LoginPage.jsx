@@ -27,7 +27,7 @@ const LoginPage = () => {
     if (success) {
       Swal.fire({
         position: 'top',
-        title: 'Login Successfully!',
+        title: '登入成功!',
         timer: 1000,
         icon: 'success',
         showConfirmButton: false,
@@ -38,7 +38,7 @@ const LoginPage = () => {
 
     Swal.fire({
       position: 'top',
-      title: 'Invalid Login',
+      title: '登入失敗',
       timer: 1000,
       icon: 'error',
       showConfirmButton: false,
@@ -46,7 +46,7 @@ const LoginPage = () => {
   };
 
   useEffect(() => {
-    if (isAuthenticated && currentMember.role === 'user') {
+    if (isAuthenticated && currentMember?.role === 'user') {
       navigate('/mainpage');
     }
   }, [navigate, isAuthenticated, currentMember]);

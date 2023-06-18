@@ -60,7 +60,7 @@ export const AuthProvider = ({ children }) => {
             email: data.email,
             account: data.account,
             password: data.password,
-            passwordCheck: data.passwordCheck,
+            checkPassword: data.checkPassword,
           });
 
           if (success) {
