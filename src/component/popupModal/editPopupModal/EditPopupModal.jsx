@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Popup from "reactjs-popup";
 import CloseIcon from "../../../assets/closeIcon.svg";
 import CameraIcon from "../../../assets/camera.svg";
@@ -26,6 +26,11 @@ const EditPopupModal = ({
   const [errorMessageUsername, setErrorMessageUsername] = useState(null);
   const [errorMessageIntro, setErrorMessageIntro] = useState(null);
   const [updatedUserData, setUpdatedUserData] = useState({});
+
+  useEffect(() => {
+    setBackgroundPhotoPreview(userData.user.banner || null);
+    setUserPhotoPreview(userData.user.avatar || null);
+  }, [userData.user.banner, userData.user.avatar]);
 
   const handlePopupClose = () => {
     onClose();
@@ -110,11 +115,11 @@ const EditPopupModal = ({
         console.log("用户信息更新成功:", response);
         onUserDataUpdate(updatedData);
         setUserData({ ...userData, user: updatedData });
+        onClose();
       })
       .catch((error) => {
         console.error("用户信息更新失败:", error);
       });
-    onClose();
   };
 
   const popupContentStyle = {
