@@ -27,7 +27,7 @@ const TweetsList = ({ tweets }) => {
             <Tweet
               key={tweet.id}
               logo={tweet.User.avatar ?? grayLogo}
-              username={tweet.User?.account ?? ""}
+              username={tweet.User?.name ?? ""}
               accountName={tweet.User?.account ?? ""}
               postTime={formatTime(tweet.createdAt)}
               content={tweet.description ?? ""}

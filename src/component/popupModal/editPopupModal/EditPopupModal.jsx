@@ -82,7 +82,10 @@ const EditPopupModal = ({ open, onClose, userData, onUserDataUpdate }) => {
       return;
     }
 
-    const updatedData = { ...userData.user, ...updatedUserData };
+    const updatedData = {
+      ...userData.user,
+      ...updatedUserData,
+    };
 
     updateUser(userData.user.id, updatedData)
       .then((response) => {

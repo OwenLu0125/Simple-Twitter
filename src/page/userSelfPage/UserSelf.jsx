@@ -31,7 +31,12 @@ const UserSelf = () => {
   };
 
   const handleUserDataUpdate = (updatedData) => {
-    setUserData(updatedData);
+    const updatedUserData = {
+      ...updatedData,
+      followingCount: userData.followingCount,
+      followersCount: userData.followersCount,
+    };
+    setUserData(updatedUserData);
   };
 
   useEffect(() => {
