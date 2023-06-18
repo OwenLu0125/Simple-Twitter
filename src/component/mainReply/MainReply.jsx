@@ -27,14 +27,35 @@ const MainReply = ({ tweet, repliesSet, tweetSet }) => {
     setShowModal(false);
   };
 
+  const handleLike = async () => {
+    try {
+      (await tweet.isLiked) ? unlikeTweet(tweet.id) : likeTweet(tweet.id);
+      setTweet((prev) => {
+        return {
+          ...prev,
+          tweetLikeCount: prev.isLiked
+            ? prev.tweetLikeCount - 1
+            : prev.tweetLikeCount + 1,
+          isLiked: !prev.isLiked,
+        };
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="singleReplyBox">
       <div className="replyMainBody">
         <div className="replyContentBox">
-          <img className="userImg" src="" alt="user-img" />
+          <img
+            className="userImg"
+            src={tweet.tweetOwnerAvatar}
+            alt="user-img"
+          />
           <div className="replyContent">
-            <span className="name">*</span>
-            <span className="account">@</span>
+            <span className="name">{tweet.tweetOwnerName}</span>
+            <span className="account">@{tweet.tweetOwnerAccount}</span>
           </div>
         </div>
         <div className="content">{tweet.description}</div>
@@ -45,14 +66,18 @@ const MainReply = ({ tweet, repliesSet, tweetSet }) => {
         </div>
       </div>
       <div className="countBox">
-        <span className="replyCount">{tweet.replyCount}</span>
-        <span className="likeCount">{tweet.LikesCount}</span>
+        <span className="replyCount">{tweet.tweetReplyCount}</span>
+        <span className="likeCount">{tweet.tweetLikeCount}</span>
       </div>
       <div className="actionBox">
         <span onClick={handleOpenModal}>
           <img src={commentIcon} alt="comment" />
         </span>
-        <img src={heartIcon} alt="heart" />
+        <img
+          src={tweet.isLiked ? fullHeart : emptyHeart}
+          alt="heart"
+          onClick={handleLike}
+        />
       </div>
       {showModal && (
         <PopupReply
