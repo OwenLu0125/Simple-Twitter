@@ -22,6 +22,17 @@ const SettingPage = () => {
       <div className="settingContainer">
         <PageTag title="帳戶設定" />
         <div className="inputContainer">
+
+          {/* 這裡可能需要把所有輸入值，做成一個新元件，統一做管理 。
+          TODO:
+            1. 製作新元件
+              1.1 新元件命名
+              1.2 新元件檔案夾位置決定
+            2. 確認是否要用useContext()
+            3. 盤點需要的資料
+            4. 跟後端確認api的使用方式
+          */}
+          
           <AuthInput label="帳號" placeholder="請輸入帳號" value="" />
 
           <AuthInput label="名稱" placeholder="請輸入使用者名稱" value="" />
