@@ -31,7 +31,7 @@ const SettingPage = () => {
     };
     try {
       const res = await putUseSettingInfo(userChangeData);
-      console.log(res.data);
+      // console.log(res.data);
       if (res.status === 200) {
         console.log("success");
         Swal.fire({
@@ -43,14 +43,6 @@ const SettingPage = () => {
         });
       }
     } catch (error) {
-      console.log(error);
-      Swal.fire({
-        position: "top",
-        title: "更改失敗!",
-        text: `請確認輸入資料是否正確`,
-        icon: "error",
-        showConfirmButton: true,
-      });
     }
   };
 
