@@ -1,21 +1,16 @@
-import "./AuthInput.scss";
+import "./UserSettingInput.scss";
 
-const AuthInput = ({
+const UserSettingInput = ({
   type,
   label,
   name,
   value,
   placeholder,
   onChange,
-  accountError,
-  passwordError,
-  error,
 }) => {
   return (
     <div
-      className={`authContainer ${
-        accountError || passwordError || error ? "error" : ""
-      }`}
+      className={`authContainer`}
     >
       <div className="label">{label}</div>
       <input
@@ -30,4 +25,4 @@ const AuthInput = ({
   );
 };
 
-export default AuthInput;
+export default UserSettingInput;
