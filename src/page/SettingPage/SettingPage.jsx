@@ -7,6 +7,8 @@ import "../SettingPage/SettingPage.scss";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
 import { useEffect, useState } from "react";
+import Swal from "sweetalert2";
+import { getUseSettingInfo, putUseSettingInfo } from "../../api/userSetting";
 
 const SettingPage = () => {
   const [account, setAccount] = useState("");
@@ -18,17 +20,49 @@ const SettingPage = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const userChangeData = {
-      name: "user2set",
-      account: "user2set",
-      email: "user2set@example.com",
-      password: "12345678",
-      checkPassword: "12345678",
+      name: userName,
+      account: account,
+      email: email,
+      password: password,
+      checkPassword: passwordCheck,
     };
-    // console.log(userChangeData);
+    try {
+      const res = await putUseSettingInfo(userChangeData);
+      console.log(res.data);
+      if (res.status === 200) {
+        console.log("success");
+        Swal.fire({
+          position: "top",
+          title: "更改成功!",
+          timer: 1000,
+          icon: "success",
+          showConfirmButton: false,
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        position: "top",
+        title: "更改失敗!",
+        text: `請確認輸入資料是否正確`,
+        icon: "error",
+        showConfirmButton: true,
+      });
+    }
   };
+
+  useEffect(() => {
+    getUseSettingInfo().then((res) => {
+      setAccount(res.data.account);
+      setUserName(res.data.name);
+      setEmail(res.data.email);
+      setPassword(res.data.password);
+      setPasswordCheck(res.data.checkPassword);
+    });
+  }, []);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -43,16 +77,6 @@ const SettingPage = () => {
       <div className="settingContainer">
         <PageTag title="帳戶設定" />
         <form className="inputContainer" onSubmit={handleSubmit}>
-          {/* 這裡可能需要把所有輸入值，做成一個新元件，統一做管理 。
-          TODO:
-              3. 盤點需要的資料
-              4. 跟後端確認api的使用方式
-              5. 確認input有哪些預設屬性可以使用
-          */}
-          {/* 目前的架構設計:
-            1. 第一次渲染先從apiservice拿到資料
-            2.                           
-          */}
           <UserSettingInput
             label="帳號"
             placeholder="請輸入帳號"
@@ -85,7 +109,9 @@ const SettingPage = () => {
             value={passwordCheck}
             onChange={(passwordCheck) => setPasswordCheck(passwordCheck)}
           />
-          <button className="btn">儲存</button>
+          <button className="btn" onClick={handleSubmit}>
+            儲存
+          </button>
         </form>
       </div>
     </div>
