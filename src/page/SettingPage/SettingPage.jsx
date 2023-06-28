@@ -1,7 +1,7 @@
 // 元件
 import Navbar from "../../component/navbar/Navbar";
 import PageTag from "../../component/pageTag/PageTag";
-import UserSettingInput from "../../component/userSetting/userSettingInput/UserSettingInput";
+import UserSettingInput from "../../component/userSetting/UserSettingInput";
 import "../SettingPage/SettingPage.scss";
 import { useAuth } from "../../contexts/AuthContext";
 // Hook
