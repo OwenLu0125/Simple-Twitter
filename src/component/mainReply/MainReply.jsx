@@ -2,7 +2,7 @@ import commentIcon from "../../assets/commit.svg";
 import emptyHeart from "../../assets/heart.svg";
 import fullHeart from "../../assets/like-heart.svg";
 import PopupReply from "../popupReply/PopupReply";
-import React, { useContext, useId, useState } from "react";
+import React, { useContext, useState } from "react";
 import { unlikeTweet, likeTweet } from "../../api/likeAndUnlike";
 import "./MainReply.scss";
 import { useAuth } from "../../contexts/AuthContext";

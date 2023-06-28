@@ -1,4 +1,5 @@
-import './SingleReply.scss';
+import { formatTime } from "../../../utils/timeUtils";
+import "./SingleReply.scss";
 
 const SingleReply = ({
   img,
@@ -16,7 +17,7 @@ const SingleReply = ({
           <span className="name">{username}</span>
           <span className="account">{accountName}</span>
           <span className="dot" />
-          <span className="date">{postTime}</span>
+          <span className="date">{formatTime(postTime)}</span>
         </div>
         <span className="replyTo">@{replyTo}</span>
         <div className="content">{content}</div>
