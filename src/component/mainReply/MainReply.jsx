@@ -8,6 +8,7 @@ import "./MainReply.scss";
 import { useAuth } from "../../contexts/AuthContext";
 import { postReply } from "../../api/tweets";
 import { TweetsContext } from "../../contexts/TweetsContext";
+import { formatDate } from "../../utils/timeUtils";
 
 const MainReply = ({ tweet, repliesSet, tweetSet, setTweet }) => {
   const [showModal, setShowModal] = useState(false);
@@ -106,9 +107,7 @@ const MainReply = ({ tweet, repliesSet, tweetSet, setTweet }) => {
         </div>
         <div className="content">{tweet.description}</div>
         <div className="timestamp">
-          <p>{tweet.updatedAt}</p>
-          <span className="dot"></span>
-          <p>{tweet.updatedAt}</p>
+          <p>{formatDate(tweet.updatedAt)}</p>
         </div>
       </div>
       <div className="countBox">
