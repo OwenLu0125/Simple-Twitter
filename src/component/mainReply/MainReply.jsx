@@ -1,14 +1,14 @@
-import commentIcon from "../../assets/commit.svg";
-import emptyHeart from "../../assets/heart.svg";
-import fullHeart from "../../assets/like-heart.svg";
-import PopupReply from "../popupReply/PopupReply";
 import React, { useContext, useState } from "react";
 import { unlikeTweet, likeTweet } from "../../api/likeAndUnlike";
-import "./MainReply.scss";
 import { useAuth } from "../../contexts/AuthContext";
 import { postReply } from "../../api/tweets";
 import { TweetsContext } from "../../contexts/TweetsContext";
 import { formatDate } from "../../utils/timeUtils";
+import commentIcon from "../../assets/commit.svg";
+import emptyHeart from "../../assets/heart.svg";
+import fullHeart from "../../assets/like-heart.svg";
+import PopupReply from "../popupReply/PopupReply";
+import "./MainReply.scss";
 
 const MainReply = ({ tweet, repliesSet, tweetSet, setTweet }) => {
   const [showModal, setShowModal] = useState(false);
@@ -137,7 +137,6 @@ const MainReply = ({ tweet, repliesSet, tweetSet, setTweet }) => {
         <button className="orangeButton" onClick={handleTweet}>
           回覆
         </button>
-        {/* 點擊推文按鈕後可以新增reply，等待api串接 */}
       </div>
 
       {showModal && (

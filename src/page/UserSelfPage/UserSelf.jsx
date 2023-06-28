@@ -17,6 +17,7 @@ import UserTweetsList from "../../component/userTweetList/UserTweetList";
 import UserRepliesList from "../../component/userRepliesList/UserRepliesList";
 import UserLikesList from "../../component/userLikesList/UserLikesList";
 import "./UserSelf.scss";
+import MobileMenu from "../../component/mobileMode/MobileMenu";
 
 const UserSelf = () => {
   const { currentMember, isAuthenticated } = useAuth();
@@ -137,6 +138,7 @@ const UserSelf = () => {
         </div>
       </div>
       <PopularList popularCards={popularCards} />
+      <MobileMenu />
     </div>
   );
 };

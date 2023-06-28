@@ -34,3 +34,8 @@
   flex: 80%;
 }
 
+@media (max-width: 768px) {
+  .mainContainer {
+    margin: unset;
+  }
+}
