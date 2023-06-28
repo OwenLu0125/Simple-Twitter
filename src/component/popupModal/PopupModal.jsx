@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useAuth } from "../../contexts/AuthContext";
+import { getPostTweet, postTweet } from "../../api/tweets";
 import Popup from "reactjs-popup";
 import CloseIcon from "../../assets/closeIcon.svg";
-import { getPostTweet, postTweet } from "../../api/tweets";
+import grayLogo from "../../assets/logoGray.svg";
 import "./PopupModal.scss";
-import { useAuth } from "../../contexts/AuthContext";
 
 const PopupModal = ({ open, onClose, setList }) => {
   const [tweetText, setTweetText] = useState("");
@@ -98,7 +99,7 @@ const PopupModal = ({ open, onClose, setList }) => {
         </div>
         <hr />
         <div className="modalBody">
-          <img src={userLogo} alt="avatar" className="userAvatar" />
+          <img src={userLogo ?? grayLogo} alt="avatar" className="userAvatar" />
           <textarea
             className="tweetInput"
             value={tweetText}

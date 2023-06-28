@@ -18,6 +18,7 @@ const FollowAndFollower = () => {
   const [activeTab, setActiveTab] = useState(initialTab);
   const [popularCards, setPopularCards] = useState([]);
   const [followShipList, setFollowShipList] = useState("");
+  const [list, setList] = useState(null);
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
   const { userId, usernameFromContext } = useUserId();
@@ -34,6 +35,7 @@ const FollowAndFollower = () => {
         activeTab === "followers"
           ? setFollowShipList([...list.followers])
           : setFollowShipList([...list.followings]);
+        setList(list);
       } catch (error) {
         console.error(error);
       }
@@ -45,7 +47,7 @@ const FollowAndFollower = () => {
     const getPopularCardsAsync = async () => {
       try {
         const popularCards = await getPopularList();
-        setPopularCards(popularCards.map((users) => ({ ...users })));
+        setPopularCards(popularCards);
       } catch (error) {
         console.error(error);
       }
@@ -67,12 +69,11 @@ const FollowAndFollower = () => {
     <div className="mainContainer">
       <Navbar />
       <div className="mainContent">
-        {/* 帶入tweetCount資料 */}
         <Header
           username={usernameFromContext}
-          tweetCount={25}
+          tweetCount={list?.tweetCount}
           pageName={
-            currentMember.id === userId
+            currentMember?.id === userId
               ? "user/self"
               : `/user/${usernameFromContext}`
           }

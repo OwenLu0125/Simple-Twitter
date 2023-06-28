@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import arrowIcon from "../../assets/arrow.svg";
-
 import "./Header.scss";
 
 const Header = ({ username, tweetCount, pageName }) => {

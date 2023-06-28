@@ -4,8 +4,10 @@ import CloseIcon from "../../assets/closeIcon.svg";
 import { postReply } from "../../api/tweets";
 import { useId } from "../../contexts/IdContext";
 import { useAuth } from "../../contexts/AuthContext";
-import "./PopupReply.scss";
 import { getSingleTweet } from "../../api/tweets";
+import grayLogo from "../../assets/logoGray.svg";
+import "./PopupReply.scss";
+
 
 const PopupReply = ({ open, onClose, repliesSet, tweetSet, setList }) => {
   const [replyMsg, setReplyMsg] = useState("");
@@ -116,7 +118,7 @@ const PopupReply = ({ open, onClose, repliesSet, tweetSet, setList }) => {
           <div className="imgBox">
             <img
               className="userImg"
-              src={tweet.tweetOwnerAvatar}
+              src={tweet.tweetOwnerAvatar ?? grayLogo}
               alt="user-img"
             />
             <span className="bar"></span>

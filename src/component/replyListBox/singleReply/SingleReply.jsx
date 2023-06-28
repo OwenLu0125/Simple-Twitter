@@ -1,4 +1,5 @@
 import { formatTime } from "../../../utils/timeUtils";
+import grayLogo from "../../../assets/logoGray.svg";
 import "./SingleReply.scss";
 
 const SingleReply = ({
@@ -11,7 +12,7 @@ const SingleReply = ({
 }) => {
   return (
     <div className="singleReplyContainer">
-      <img className="userImg" src={img} alt="user-img" />
+      <img className="userImg" src={img ?? grayLogo} alt="user-img" />
       <div className="singleReplyMainContent">
         <div className="singleReplyContent">
           <span className="name">{username}</span>
