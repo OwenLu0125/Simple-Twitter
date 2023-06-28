@@ -1,13 +1,13 @@
+// 元件
 import Navbar from "../../component/navbar/Navbar";
-// import AuthInput from "../../component/authInput/AuthInput";
 import PageTag from "../../component/pageTag/PageTag";
-// import UserInputCollection from "../../component/userSetting/UserInputCollection";
 import UserSettingInput from "../../component/userSetting/userSettingInput/UserSettingInput";
 import "../SettingPage/SettingPage.scss";
-import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../contexts/AuthContext";
+// Hook
+import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Swal from "sweetalert2";
+// api
 import { getUseSettingInfo, putUseSettingInfo } from "../../api/userSetting";
 
 const SettingPage = () => {
@@ -34,13 +34,6 @@ const SettingPage = () => {
       // console.log(res.data);
       if (res.status === 200) {
         console.log("success");
-        Swal.fire({
-          position: "top",
-          title: "更改成功!",
-          timer: 1000,
-          icon: "success",
-          showConfirmButton: false,
-        });
       }
     } catch (error) {
     }
@@ -51,8 +44,6 @@ const SettingPage = () => {
       setAccount(res.data.account);
       setUserName(res.data.name);
       setEmail(res.data.email);
-      setPassword(res.data.password);
-      setPasswordCheck(res.data.checkPassword);
     });
   }, []);
 
@@ -68,7 +59,7 @@ const SettingPage = () => {
       </div>
       <div className="settingContainer">
         <PageTag title="帳戶設定" />
-        <form className="inputContainer" onSubmit={handleSubmit}>
+        <form className="inputContainer" >
           <UserSettingInput
             label="帳號"
             placeholder="請輸入帳號"
