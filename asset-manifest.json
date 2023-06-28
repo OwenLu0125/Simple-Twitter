@@ -1,10 +1,11 @@
 {
   "files": {
-    "main.css": "/Simple-Twitter/static/css/main.512ac627.css",
-    "main.js": "/Simple-Twitter/static/js/main.8c63805f.js",
+    "main.css": "/Simple-Twitter/static/css/main.06b91036.css",
+    "main.js": "/Simple-Twitter/static/js/main.03884991.js",
     "static/js/787.28cb0dcd.chunk.js": "/Simple-Twitter/static/js/787.28cb0dcd.chunk.js",
     "static/media/maple-leaf.jpg": "/Simple-Twitter/static/media/maple-leaf.e55a97cbe6ecb61f9db0.jpg",
     "static/media/canadian-girl.jpg": "/Simple-Twitter/static/media/canadian-girl.ec9671444feba8053236.jpg",
+    "static/media/backgroundImage.svg": "/Simple-Twitter/static/media/backgroundImage.7eaad1f244b9e7e56fa9.svg",
     "static/media/setting.svg": "/Simple-Twitter/static/media/setting.5293a1409503661dadec099d58db0548.svg",
     "static/media/settingActive.svg": "/Simple-Twitter/static/media/settingActive.53670273838eeeda8dbecd8c276f620c.svg",
     "static/media/logoGray.svg": "/Simple-Twitter/static/media/logoGray.2adf53e9a94d7af4ce3f9112d2fb2d95.svg",
@@ -21,6 +22,7 @@
     "static/media/homeActive.svg": "/Simple-Twitter/static/media/homeActive.8d86d6b98090480da2d18572c2a13e8f.svg",
     "static/media/feather.svg": "/Simple-Twitter/static/media/feather.b81f6066c7900622a3effd74e06552b6.svg",
     "static/media/whiteClose.svg": "/Simple-Twitter/static/media/whiteClose.07ff379b92839450d71f4df56b6d1dec.svg",
+    "static/media/tweet-mobile.svg": "/Simple-Twitter/static/media/tweet-mobile.f7b9fb2c0b85fc1c26e8aff263bf9482.svg",
     "index.html": "/Simple-Twitter/index.html",
     "static/media/closeIcon.svg": "/Simple-Twitter/static/media/closeIcon.c91a0ef5b9debf3a1ef0a76114a0a0a8.svg",
     "static/media/userInfoActive.svg": "/Simple-Twitter/static/media/userInfoActive.b922df5f3f698635b454a9dcb9585de0.svg",
@@ -28,12 +30,12 @@
     "static/media/arrow.svg": "/Simple-Twitter/static/media/arrow.e8ec00a1d11a2567c2fadb6ef56db9d7.svg",
     "static/media/like-heart.svg": "/Simple-Twitter/static/media/like-heart.5e5d892842ae545d6d81b84cec2019b6.svg",
     "static/media/redHeart.svg": "/Simple-Twitter/static/media/redHeart.5e5d892842ae545d6d81.svg",
-    "main.512ac627.css.map": "/Simple-Twitter/static/css/main.512ac627.css.map",
-    "main.8c63805f.js.map": "/Simple-Twitter/static/js/main.8c63805f.js.map",
+    "main.06b91036.css.map": "/Simple-Twitter/static/css/main.06b91036.css.map",
+    "main.03884991.js.map": "/Simple-Twitter/static/js/main.03884991.js.map",
     "787.28cb0dcd.chunk.js.map": "/Simple-Twitter/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.512ac627.css",
-    "static/js/main.8c63805f.js"
+    "static/css/main.06b91036.css",
+    "static/js/main.03884991.js"
   ]
 }
