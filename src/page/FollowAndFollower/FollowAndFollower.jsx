@@ -21,7 +21,7 @@ const FollowAndFollower = () => {
   const navigate = useNavigate();
   const { isAuthenticated } = useAuth();
   const { userId, usernameFromContext } = useUserId();
-
+  const { currentMember } = useAuth();
 
   useEffect(() => {
     const getFollowShipList = async () => {
@@ -31,7 +31,9 @@ const FollowAndFollower = () => {
             ? await getFollowerList(userId)
             : await getFollowingList(userId);
 
-        setFollowShipList([...list]);
+        activeTab === "followers"
+          ? setFollowShipList([...list.followers])
+          : setFollowShipList([...list.followings]);
       } catch (error) {
         console.error(error);
       }
@@ -69,7 +71,11 @@ const FollowAndFollower = () => {
         <Header
           username={usernameFromContext}
           tweetCount={25}
-          pageName="user/self"
+          pageName={
+            currentMember.id === userId
+              ? "user/self"
+              : `/user/${usernameFromContext}`
+          }
         />
         <hr />
         <TabBar

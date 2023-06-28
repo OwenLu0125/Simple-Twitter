@@ -44,7 +44,7 @@ const UserPageTweet = ({
         await unlikeTweet(String(tweetId));
         setList?.((prev) => {
           return prev.map((tweet) => {
-            if (tweet.id === tweetId) {
+            if (tweet.id === tweetId || tweet.TweetId === tweetId) {
               return {
                 ...tweet,
                 likeCount: tweet.likeCount - 1,
@@ -58,7 +58,7 @@ const UserPageTweet = ({
         await likeTweet(String(tweetId));
         setList?.((prev) => {
           return prev.map((tweet) => {
-            if (tweet.id === tweetId) {
+            if (tweet.id === tweetId || tweet.TweetId === tweetId) {
               return {
                 ...tweet,
                 likeCount: tweet.likeCount + 1,

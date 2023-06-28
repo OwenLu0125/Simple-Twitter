@@ -47,21 +47,21 @@ const UserSelf = () => {
 
       try {
         const userTweets = await getUserTweets(id);
-        setTweets(userTweets.map((tweet) => ({ ...tweet })));
+        setTweets(userTweets);
       } catch (error) {
         console.error("獲取用户推文失敗：", error);
       }
 
       try {
         const userReplies = await getUserRepliedTweets(id);
-        setReplies(userReplies.map((reply) => ({ ...reply })));
+        setReplies(userReplies);
       } catch (error) {
         console.error("獲取用戶資料失敗：", error);
       }
 
       try {
         const userLikes = await getUserLikes(id);
-        setLikes(userLikes.map((like) => ({ ...like })));
+        setLikes(userLikes);
       } catch (error) {
         console.error("獲取用户喜歡的推文失敗：", error);
       }
@@ -131,6 +131,7 @@ const UserSelf = () => {
             <UserLikesList
               likes={likes}
               className="tweetsSection"
+              setTweetsList={setLikes}
             />
           )}
         </div>

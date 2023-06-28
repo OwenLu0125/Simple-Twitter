@@ -53,7 +53,7 @@ const PopupReply = ({ open, onClose, repliesSet, tweetSet, setList }) => {
 
       setList?.((prev) => {
         return prev.map((tweet) => {
-          if (tweet.id === currentId) {
+          if (tweet.id === currentId || tweet.TweetId === currentId) {
             return {
               ...tweet,
               RepliesCount: tweet.RepliesCount + 1,

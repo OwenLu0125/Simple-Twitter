@@ -38,22 +38,26 @@ const UserOther = () => {
     const fetchData = async () => {
       try {
         const userTweets = await getUserTweets(userId);
-        setTweets(userTweets.map((tweet) => ({ ...tweet })));
+        setTweets(userTweets);
       } catch (error) {
         console.error("获取用户推文失败：", error);
       }
 
       try {
         const userReplies = await getUserRepliedTweets(userId);
-        setReplies(userReplies.map((reply) => ({ ...reply })));
+        setReplies(userReplies);
       } catch (error) {
         console.error("獲取用戶資料失败：", error);
       }
 
       try {
         const userLikes = await getUserLikes(userId);
-        console.log(userLikes);
-        setLikes(userLikes.map((like) => ({ ...like })));
+
+        setLikes(userLikes);
+
+        
+        
+
       } catch (error) {
         console.error("获取用户喜欢的推文失败：", error);
       }
@@ -117,7 +121,11 @@ const UserOther = () => {
             <UserRepliesList replies={replies} className="tweetsSection" />
           )}
           {activeTab === "likes" && (
-            <UserLikesList likes={likes} className="tweetsSection" />
+            <UserLikesList
+              likes={likes}
+              className="tweetsSection"
+              setTweetsList={setLikes}
+            />
           )}
         </div>
       </div>
