@@ -9,6 +9,8 @@ import { useAuth } from "../../contexts/AuthContext";
 const LoginAdmin = () => {
   const [account, setAccount] = useState("");
   const [password, setPassword] = useState("");
+  const [accountError, setAccountError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const navigate = useNavigate();
 
   const { adminLogin, isAuthenticated, currentMember } = useAuth();
