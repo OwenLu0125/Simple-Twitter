@@ -5,7 +5,7 @@ import { getPostTweet, postTweet } from "../../api/tweets";
 import "./PopupModal.scss";
 import { useAuth } from "../../contexts/AuthContext";
 
-const PopupModal = ({ open, onClose, setList }) => {
+const PopupModal = ({ open, onClose, setList, setTweetsList }) => {
   const [tweetText, setTweetText] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [userLogo, setUserLogo] = useState("");
@@ -47,7 +47,7 @@ const PopupModal = ({ open, onClose, setList }) => {
       const response = await postTweet({ tweetText });
       console.log("推文已發布:", response);
 
-      setList((prev) => {
+      setList?.((prev) => {
         return [
           {
             Likes: [],
@@ -56,6 +56,21 @@ const PopupModal = ({ open, onClose, setList }) => {
             RepliesCount: 0,
             ...response.data,
             User: { ...currentMember },
+          },
+          ...prev,
+        ];
+      });
+
+      setTweetsList?.((prev) => {
+        return [
+          {
+            ...response.data,
+            account: currentMember.account,
+            avatar: currentMember.avatar,
+            currentUserIsLiked: false,
+            likeCount: 0,
+            name: currentMember.name,
+            replyCount: 0,
           },
           ...prev,
         ];
