@@ -27,7 +27,7 @@ export const getSingleTweet = async (id) => {
     //console.log(res.data);
     return res.data;
   } catch (error) {
-    console.error('[Get Tweet failed]: ', error);
+    console.error("[Get Tweet failed]: ", error);
   }
 };
 
@@ -37,7 +37,7 @@ export const getTweetReplies = async (id) => {
     //console.log(data);
     return data;
   } catch (error) {
-    console.error('[Get Tweet failed]: ', error);
+    console.error("[Get Tweet failed]: ", error);
   }
 };
 
@@ -48,7 +48,7 @@ export const postReply = async ({ id, comment }) => {
     });
     return res;
   } catch (error) {
-    console.error('[Post Reply failed]: ', error);
+    console.error("[Post Reply failed]: ", error);
     throw error;
   }
 };
@@ -59,7 +59,7 @@ export const getUserTweets = async (userId) => {
     //console.log(res.data);
     return res.data;
   } catch (error) {
-    console.error('[Get User Tweets failed]: ', error);
+    console.error("[Get User Tweets failed]: ", error);
   }
 };
 
@@ -81,7 +81,7 @@ export const getUserLikes = async (userId) => {
     console.log(res.data);
     return res.data;
   } catch (error) {
-    console.error('[Get User Likes failed]: ', error);
+    console.error("[Get User Likes failed]: ", error);
   }
 };
 
