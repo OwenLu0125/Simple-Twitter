@@ -48,6 +48,7 @@ const UserPageTweet = ({
               return {
                 ...tweet,
                 likeCount: tweet.likeCount - 1,
+                currentUserIsLiked: false,
                 isLiked: false,
               };
             }
@@ -62,6 +63,7 @@ const UserPageTweet = ({
               return {
                 ...tweet,
                 likeCount: tweet.likeCount + 1,
+                currentUserIsLiked: true,
                 isLiked: true,
               };
             }
