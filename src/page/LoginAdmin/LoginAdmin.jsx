@@ -37,17 +37,10 @@ const LoginAdmin = () => {
         icon: "success",
         showConfirmButton: false,
       });
-
-      return;
+    } else {
+      setAccountError("帳號或密碼不存在");
+      setPasswordError("帳號或密碼不存在");
     }
-
-    Swal.fire({
-      position: "top",
-      title: "此帳號不存在",
-      timer: 1000,
-      icon: "error",
-      showConfirmButton: false,
-    });
   };
 
   useEffect(() => {
