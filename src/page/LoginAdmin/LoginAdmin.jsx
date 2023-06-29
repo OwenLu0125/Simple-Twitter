@@ -59,17 +59,21 @@ const LoginAdmin = () => {
         <AuthInput
           label="帳號"
           placeholder="請輸入帳號"
+          accountError={accountError}
           value={account}
           onChange={(nameInputValue) => setAccount(nameInputValue)}
         />
+        {accountError && <p className="error">{accountError}</p>}
 
         <AuthInput
           type="password"
           label="密碼"
           placeholder="請輸入密碼"
+          passwordError={passwordError}
           value={password}
           onChange={(passwordInputValue) => setPassword(passwordInputValue)}
         />
+        {passwordError && <p className="error">{passwordError}</p>}
       </div>
       <button className="btn" onClick={handleClick}>
         登入
