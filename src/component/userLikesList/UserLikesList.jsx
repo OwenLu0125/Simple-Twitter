@@ -14,7 +14,7 @@ const UserLikesList = ({ likes, setTweetsList }) => {
           content={like.description}
           comments={like.replyCount}
           likes={like.likeCount}
-          isLiked={like.isLiked}
+          isLiked={like.currentUserIsLiked}
           tweetId={like.TweetId}
           setList={setTweetsList}
         />
