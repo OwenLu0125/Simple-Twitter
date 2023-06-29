@@ -22,18 +22,18 @@ axiosInstance.interceptors.request.use(
 export const getUsersByAdmin = async () => {
   try {
     const { data } = await axiosInstance.get(`${baseUrl}/admin/users`);
-    console.log(data);
+    // console.log(data);
     return data;
   } catch (error) {
     console.error('[Get Users failed]: ', error);
   }
 };
 
-export const gettweetsByAdmin = async () => {
+export const getTweetsByAdmin = async () => {
   try {
-    const { data } = await axiosInstance.get(`${baseUrl}/admin/tweets`);
-    console.log(data);
-    return data.tweets;
+    const  res = await axiosInstance.get(`${baseUrl}/admin/tweets`);
+    // console.log(res);
+    return res.data.tweetsData;
   } catch (error) {
     console.error('[Get Tweets failed]: ', error);
   }

@@ -8,10 +8,11 @@ const AdminTweetList = ({ tweets, setList }) => {
         <AdminTweet
           key={tweet.id}
           tweetId={tweet.id}
-          img={tweet.User.avatar}
-          username={tweet.User.name}
-          accountName={tweet.User.account}
-          postTime={tweet.updatedAt}
+          userId={tweet.UserId}
+          tweetOwnerAvatar={tweet.tweetOwnerAvatar}
+          username={tweet.tweetOwnerName}
+          accountName={tweet.tweetOwnerAccount}
+          postTime={tweet.createdAt}
           content={tweet.description}
           setList={setList}
         />

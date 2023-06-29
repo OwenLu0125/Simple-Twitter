@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PopupModal from "../popupModal/PopupModal";
 import { getPostTweet } from "../../api/tweets";
+import grayLogo from "../../assets/logoGray.svg";
 import "./Post.scss";
 
 const Post = ({ setList }) => {
@@ -41,7 +42,11 @@ const Post = ({ setList }) => {
       <hr />
       <div className="postContent">
         <div className="postBox" onClick={handleOpenModal}>
-          <img src={userLogo} alt="User Avatar" className="userAvatar" />
+          <img
+            src={userLogo ?? grayLogo}
+            alt="User Avatar"
+            className="userAvatar"
+          />
           <div className="postTextContainer">
             <input
               type="text"

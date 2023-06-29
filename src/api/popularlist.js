@@ -11,7 +11,7 @@ import axiosInstance, { baseUrl } from './axiosInstance';
 export const getPopularList = async () => {
   try {
     const res = await axiosInstance.get(`${baseUrl}/users/top`);
-    //console.log(res.data.topUsers);
+    console.log(res.data.topUsers);
     return res.data.topUsers;
   } catch (error) {
     console.error('[Get getPopularList failed]: ', error);
@@ -24,7 +24,7 @@ export const likePopularCard = async (followerId) => {
     const res = await axiosInstance.post(`${baseUrl}/followships`, {
       id: `${followerId}`,
     });
-    // console.log(res.data);
+    console.log(res.data);
     return res.data;
   } catch (error) {
     console.error('[Like PopularCard failed]: ', error);

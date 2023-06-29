@@ -6,6 +6,7 @@ import btnMsg from "../../../assets/btnMsg.svg";
 import btnNotfi from "../../../assets/btnNotfi.svg";
 import activeNotfi from "../../../assets/btn_notfi.svg";
 import "./UserOther.scss";
+import MobileMenu from "../../mobileMode/MobileMenu";
 
 const UserOtherItem = ({
   avatar,
@@ -104,6 +105,7 @@ const UserOtherItem = ({
           </div>
         </div>
       </div>
+      <MobileMenu />
     </div>
   );
 };

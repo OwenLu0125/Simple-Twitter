@@ -52,7 +52,7 @@ const UserOther = () => {
 
       try {
         const userLikes = await getUserLikes(userId);
-
+        console.log(userLikes);
         setLikes(userLikes);
       } catch (error) {
         console.error("获取用户喜欢的推文失败：", error);
@@ -60,7 +60,7 @@ const UserOther = () => {
 
       try {
         const popularCards = await getPopularList();
-        setPopularCards(popularCards.map((users) => ({ ...users })));
+        setPopularCards(popularCards);
       } catch (error) {
         console.error("获取热门列表失败：", error);
       }

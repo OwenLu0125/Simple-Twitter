@@ -4,6 +4,7 @@ import EditPopupModal from "../popupModal/editPopupModal/EditPopupModal";
 import { getUserEdit } from "../../api/popupEditModal";
 import { useAuth } from "../../contexts/AuthContext";
 import { useUserId } from "../../contexts/UserIdContext";
+import grayLogo from "../../assets/logoGray.svg";
 import "./UserInfo.scss";
 
 const UserInfo = ({
@@ -53,7 +54,11 @@ const UserInfo = ({
       <img src={banner} className="background" alt="banner" />
       <div className="userContext">
         <div className="upSection">
-          <img src={avatar} alt="User Icon" className="userAvatar" />
+          <img
+            src={avatar ?? grayLogo}
+            alt="User Icon"
+            className="userAvatar"
+          />
           <button className="whiteButton" onClick={handleEditProfileClick}>
             編輯個人資料
           </button>

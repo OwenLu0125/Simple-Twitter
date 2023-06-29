@@ -1,21 +1,13 @@
 import UserPageTweet from "../userPageTweet/UserPageTweet";
 import { formatTime } from "../../utils/timeUtils";
 
-
-
-
 const UserLikesList = ({ likes, setTweetsList }) => {
-
   return (
     <div className="tweetsListContainer">
       {likes.map((like) => (
         <UserPageTweet
-          //key={like.UserId}
-
-        
-
-          logo={like.tweetOwnerAvatar} 
-
+          key={like.TweetId}
+          logo={like.tweetOwnerAvatar}
           username={like.tweetOwnerName}
           accountName={like.tweetOwnerAccount}
           postTime={formatTime(like.createdAt)}

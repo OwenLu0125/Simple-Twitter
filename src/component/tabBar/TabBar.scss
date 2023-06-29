@@ -16,3 +16,11 @@
     }
   }
 }
+
+@media (max-width: 400px) {
+  .tabBar {
+    .tabButton {
+      padding: 15px 40px;
+    }
+  }
+}

@@ -116,7 +116,7 @@ const Navbar = ({ setList, setTweetsList }) => {
         />
       )}
       <div className="logoutBtn">
-        <img src={NavbarLogoutIcon} alt="" />
+        <img src={NavbarLogoutIcon} alt="logout icon" />
         <h5 className="medium" onClick={handleClick}>
           登出
         </h5>
