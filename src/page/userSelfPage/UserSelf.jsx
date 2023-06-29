@@ -89,7 +89,7 @@ const UserSelf = () => {
 
   return (
     <div className="mainContainer">
-      <Navbar />
+      <Navbar setTweetsList={setTweets} />
       <div className="mainContent">
         <Header username={userData?.name} tweetCount={userData?.TweetCount} />
         <div className="postSection">
