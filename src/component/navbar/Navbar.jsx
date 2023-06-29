@@ -59,7 +59,7 @@ const adminNavItems = [
   },
 ];
 
-const Navbar = ({ setList }) => {
+const Navbar = ({ setList, setTweetsList }) => {
   const [showModal, setShowModal] = useState(false);
   const location = useLocation();
   const { pathname } = location;
@@ -112,6 +112,7 @@ const Navbar = ({ setList }) => {
           open={showModal}
           setList={setList}
           onClose={handleCloseModal}
+          setTweetsList={setTweetsList}
         />
       )}
       <div className="logoutBtn">
