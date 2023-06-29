@@ -21,6 +21,12 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+
+    .error {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--Error);
+    }
   }
 
   .btn {
