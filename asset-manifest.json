@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Simple-Twitter/static/css/main.e46938e3.css",
-    "main.js": "/Simple-Twitter/static/js/main.c4348dc2.js",
+    "main.css": "/Simple-Twitter/static/css/main.333c9e2c.css",
+    "main.js": "/Simple-Twitter/static/js/main.ffccf953.js",
     "static/js/787.28cb0dcd.chunk.js": "/Simple-Twitter/static/js/787.28cb0dcd.chunk.js",
     "static/media/maple-leaf.jpg": "/Simple-Twitter/static/media/maple-leaf.e55a97cbe6ecb61f9db0.jpg",
     "static/media/canadian-girl.jpg": "/Simple-Twitter/static/media/canadian-girl.ec9671444feba8053236.jpg",
@@ -30,12 +30,12 @@
     "static/media/arrow.svg": "/Simple-Twitter/static/media/arrow.e8ec00a1d11a2567c2fadb6ef56db9d7.svg",
     "static/media/like-heart.svg": "/Simple-Twitter/static/media/like-heart.5e5d892842ae545d6d81b84cec2019b6.svg",
     "static/media/redHeart.svg": "/Simple-Twitter/static/media/redHeart.5e5d892842ae545d6d81.svg",
-    "main.e46938e3.css.map": "/Simple-Twitter/static/css/main.e46938e3.css.map",
-    "main.c4348dc2.js.map": "/Simple-Twitter/static/js/main.c4348dc2.js.map",
+    "main.333c9e2c.css.map": "/Simple-Twitter/static/css/main.333c9e2c.css.map",
+    "main.ffccf953.js.map": "/Simple-Twitter/static/js/main.ffccf953.js.map",
     "787.28cb0dcd.chunk.js.map": "/Simple-Twitter/static/js/787.28cb0dcd.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e46938e3.css",
-    "static/js/main.c4348dc2.js"
+    "static/css/main.333c9e2c.css",
+    "static/js/main.ffccf953.js"
   ]
 }
